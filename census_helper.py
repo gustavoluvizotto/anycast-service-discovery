@@ -44,14 +44,14 @@ def download_date(year, month, day, version) -> pd.DataFrame:
 
 def main(args):
     datetime_obj = datetime.strptime(args.date, "%Y%m%d")
-    pdf = download_date(datetime_obj.year, datetime_obj.month, datetime_obj.day, args.version)
+    pdf = download_date(datetime_obj.year, datetime_obj.month, datetime_obj.day, args.ip_version)
     output_path = args.output_dir if args.output_dir else "."
-    pdf.to_csv(f"{output_path}/anycast_census_{datetime_obj.year}_{datetime_obj.month:02d}_{datetime_obj.day:02d}_{args.version}.csv", index=False)
+    pdf.to_csv(f"{output_path}/anycast_census_{datetime_obj.year}_{datetime_obj.month:02d}_{datetime_obj.day:02d}_{args.ip_version}.csv", index=False)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--version", required=True, type=str,
+    parser.add_argument("--ip-version", required=True, type=str,
                         help="v4 or v6")
     parser.add_argument("--date", required=True, type=str,
                         help="Download single snapshot. Format: YYYYMMDD")

@@ -1,0 +1,10 @@
+# Dockerfile
+FROM alpine:latest
+
+RUN apk update && \
+    apk add --no-cache nmap bash && \
+    rm -rf /var/cache/apk/*
+
+WORKDIR /app
+
+ENTRYPOINT ["nmap"]

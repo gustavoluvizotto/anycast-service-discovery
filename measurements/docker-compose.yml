@@ -1,0 +1,22 @@
+services:
+  mtr:
+    build:
+      context: .
+      dockerfile: Dockerfile.mtr
+    container_name: mtr
+    volumes:
+      - ./results:/app/results
+      - ./input:/app/input
+    cap_add:
+      - NET_RAW
+
+  nmap:
+    build:
+      context: .
+      dockerfile: Dockerfile.nmap
+    container_name: nmap
+    volumes:
+      - ./results:/app/results
+      - ./input:/app/input
+    cap_add:
+      - NET_RAW

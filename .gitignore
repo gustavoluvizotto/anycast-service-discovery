@@ -2,3 +2,4 @@
 /measurements/v6_*.csv
 /measurements/anycast_census_*.csv
 /venv/*
+/.vscode/*

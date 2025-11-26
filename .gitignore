@@ -2,5 +2,7 @@
 /measurements/v6_*.csv
 /measurements/anycast_census_*.csv
 /measurements/input/responsive_anycast_*.csv
+/measurements/results/*
 /venv/*
 /.vscode/*
+/*/.DS_Store

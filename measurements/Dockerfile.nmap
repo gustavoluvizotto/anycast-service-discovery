@@ -2,7 +2,7 @@
 FROM alpine:latest
 
 RUN apk update && \
-    apk add --no-cache nmap bash && \
+    apk add --no-cache nmap nmap-scripts bash && \
     rm -rf /var/cache/apk/*
 
 WORKDIR /app

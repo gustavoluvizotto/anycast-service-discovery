@@ -1,6 +1,7 @@
 /measurements/internet_address_verfploeter_hitlist_*.csv
 /measurements/v6_*.csv
 /measurements/anycast_census_*.csv
+/measurements/anycast_prefixes_*.csv
 /measurements/input/responsive_anycast_*.csv
 /measurements/results/*
 /venv/*

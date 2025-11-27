@@ -1,13 +1,20 @@
 #!/bin/bash
 
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <input_file> <protocol_version=v4|v6>"
+    exit 1
+fi
+
+
 mkdir -p results/nmap
 
-INPUT_FILE=$1
-PROTOCOL_VERSION=$2  # "4" or "6"
+INPUT_FILE=$(basename $1)
+PROTOCOL_VERSION=$2
 N=20  # Number of parallel scans
-TIME_OUTPUT="nmap_time_$(date +%Y%m%d_%H%M%S).txt"
+TIMESTAMP=$(TZ=":UTC" date '+%Y%m%d%H%M%S')
+TIME_OUTPUT="nmap_time_${TIMESTAMP}.txt"
 
-if [[ "${PROTOCOL_VERSION}" -eq 6 ]]; then
+if [[ "${PROTOCOL_VERSION}" == "v6" ]]; then
     echo "Scanning IPv6 addresses"
     PROTOCOL_VERSION="-6"
 else
@@ -22,5 +29,5 @@ fi
 
     # https://www.siberoloji.com/adjusting-parallelism-min-parallelism-max-parallelism-with-nmap/
     # --min-parallelism: set the minimum number of parallel probes
-    docker compose run --rm nmap -T4 "${PROTOCOL_VERSION}" --min-parallelism 50 --host-timeout 3m -oX /app/results/nmap/output.xml -iL "/app/${INPUT_FILE}" -sV
-} 2> results/nmap/"${TIME_OUTPUT}"
+    docker compose run --rm nmap -T4 "${PROTOCOL_VERSION}" --min-parallelism 50 --host-timeout 3m -oX /app/results/nmap/nmap_${TIMESTAMP}_${PROTOCOL_VERSION}.xml -iL "/app/input/nmap/${INPUT_FILE}" -sV
+} 2> /app/results/nmap/"${TIME_OUTPUT}"

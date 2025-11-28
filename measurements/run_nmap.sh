@@ -29,5 +29,5 @@ fi
 
     # https://www.siberoloji.com/adjusting-parallelism-min-parallelism-max-parallelism-with-nmap/
     # --min-parallelism: set the minimum number of parallel probes
-    docker compose run --rm nmap -T4 "${PROTOCOL_VERSION}" --min-parallelism 50 --host-timeout 3m -oX /app/results/nmap/nmap_${TIMESTAMP}_${PROTOCOL_VERSION}.xml -iL "/app/input/nmap/${INPUT_FILE}" -sV
-} 2> /app/results/nmap/"${TIME_OUTPUT}"
+    docker compose run --rm nmap -T4 ${PROTOCOL_VERSION} --min-parallelism 50 --host-timeout 3m -oX "results/nmap/nmap_${TIMESTAMP}_${PROTOCOL_VERSION}.xml" -iL "input/nmap/${INPUT_FILE}" -sT -sV
+} 2> results/nmap/"${TIME_OUTPUT}"

@@ -8,3 +8,4 @@ RUN apk update && \
 WORKDIR /app
 
 ENTRYPOINT ["nmap"]
+#ENTRYPOINT [""]

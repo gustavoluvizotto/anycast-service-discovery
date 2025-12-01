@@ -20,3 +20,22 @@ services:
       - ./input:/app/input
     cap_add:
       - NET_RAW
+
+  quic:
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    ulimits:
+      nofile:
+        soft: "1000000"
+        hard: "1000000"
+    environment: 
+      - GODEBUG=tlskyber=0
+    build:
+      context: .
+      dockerfile: Dockerfile.quic
+    container_name: quic
+    volumes:
+      - ./results:/app/results
+      - ./input:/app/input
+    cap_add:
+      - NET_RAW

@@ -1,0 +1,4 @@
+[submodule "measurements/internet-wide-scans"]
+	path = measurements/internet-wide-scans
+    url = git@gitlab.utwente.nl:m7711402/internet-wide-scans.git
+    branch = main

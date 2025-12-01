@@ -10,7 +10,6 @@ mkdir -p results/nmap
 
 INPUT_FILE=$(basename $1)
 PROTOCOL_VERSION=$2
-N=20  # Number of parallel scans
 TIMESTAMP=$(TZ=":UTC" date '+%Y%m%d%H%M%S')
 TIME_OUTPUT="nmap_time_${TIMESTAMP}.txt"
 
@@ -29,5 +28,5 @@ fi
 
     # https://www.siberoloji.com/adjusting-parallelism-min-parallelism-max-parallelism-with-nmap/
     # --min-parallelism: set the minimum number of parallel probes
-    docker compose run --rm nmap -T4 ${PROTOCOL_VERSION} --min-parallelism 50 --host-timeout 3m -oX "results/nmap/nmap_${TIMESTAMP}_${PROTOCOL_VERSION}.xml" -iL "input/nmap/${INPUT_FILE}" -sT -sV
+    docker compose run --rm nmap -T4 ${PROTOCOL_VERSION} --script "version,safe" --script-timeout 1m --max-retries 3 --min-parallelism 40 --host-timeout 2m -oX "results/nmap/nmap_${TIMESTAMP}_${PROTOCOL_VERSION}.xml" -iL "input/nmap/${INPUT_FILE}" -n -Pn -sT -sV
 } 2> results/nmap/"${TIME_OUTPUT}"

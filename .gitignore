@@ -4,6 +4,7 @@
 /measurements/input/zmap/anycast_prefixes_*.csv
 /measurements/input/nmap/responsive_anycast_*.csv
 /measurements/input/nmap/zmap_responsive_*.csv
+/measurements/input/
 /measurements/results/*
 /venv/*
 /.vscode/*

@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile.mtr
     container_name: mtr
+    network_mode: "host"
     volumes:
       - ./results:/app/results
       - ./input:/app/input
@@ -15,6 +16,7 @@ services:
       context: .
       dockerfile: Dockerfile.nmap
     container_name: nmap
+    network_mode: "host"
     volumes:
       - ./results:/app/results
       - ./input:/app/input
@@ -24,6 +26,9 @@ services:
   zgrab:
     image: ghcr.io/zmap/zgrab2:latest
     container_name: zgrab
+    network_mode: "host"
     volumes:
-      - ./results:/app/results
-      - ./input:/app/input
+      - ./results:/usr/bin/results
+      - ./input:/usr/bin/input
+    cap_add:
+      - NET_RAW

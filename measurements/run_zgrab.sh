@@ -19,5 +19,5 @@ elif [[ "${PROTOCOL_VERSION}" == "v6" ]]; then
 fi
 
 time { \
-    docker compose run --rm zgrab2 banner -f "input/zgrab/${INPUT_FILE}" -o "results/zgrab/zgrab_${TIMESTAMP}_${PROTOCOL_VERSION}.csv" #${EXTRA_PARAMS}
+    docker compose run --rm zgrab banner -f "input/zgrab/${INPUT_FILE}" -o "results/zgrab/zgrab_${TIMESTAMP}_${PROTOCOL_VERSION}.csv" #${EXTRA_PARAMS}
 } 2> results/zgrab/"${TIME_OUTPUT}"

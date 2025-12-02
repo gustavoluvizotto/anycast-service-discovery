@@ -6,6 +6,7 @@
 /measurements/input/nmap/zmap_responsive_*.csv
 /measurements/input/
 /measurements/results/*
+/measurements/nmap-services
 /venv/*
 /.vscode/*
 /*/.DS_Store

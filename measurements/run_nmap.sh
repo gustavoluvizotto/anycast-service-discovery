@@ -34,5 +34,7 @@ fi
 { time \
     # https://nmap.org/book/man-performance.html
     # https://www.siberoloji.com/adjusting-parallelism-min-parallelism-max-parallelism-with-nmap/
+    # https://nmap.org/book/synscan.html
+    # https://nmap.org/book/man-nse.html
     docker compose run --rm nmap -T4 ${PROTOCOL_VERSION} --script='' --max-retries 3 --min-parallelism 40 --host-timeout 2m --top-ports 2000 -oX "results/nmap/nmap_${TIMESTAMP}_${PROTOCOL_VERSION}${SHARD_TXT}.xml" -iL "input/nmap/${INPUT_FILE}" -n -sS
 } 2> results/nmap/"${TIME_OUTPUT}"

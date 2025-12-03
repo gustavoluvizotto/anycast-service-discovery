@@ -4,8 +4,8 @@
 /measurements/input/zmap/anycast_prefixes_*.csv
 /measurements/input/nmap/responsive_anycast_*.csv
 /measurements/input/nmap/zmap_responsive_*.csv
-/measurements/input/
-!/measurements/input/zgrab/zgrab_config.ini
+/measurements/input/nmap/sharding/*
+/measurements/input/zgrab/*.csv
 /measurements/results/*
 /measurements/nmap-services
 /venv/*

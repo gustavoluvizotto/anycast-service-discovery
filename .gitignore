@@ -5,6 +5,7 @@
 /measurements/input/nmap/responsive_anycast_*.csv
 /measurements/input/nmap/zmap_responsive_*.csv
 /measurements/input/
+!/measurements/input/zgrab/zgrab_config.ini
 /measurements/results/*
 /measurements/nmap-services
 /venv/*

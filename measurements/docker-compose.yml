@@ -32,3 +32,22 @@ services:
       - ./input:/usr/bin/input
     cap_add:
       - NET_RAW
+  
+  lzr:
+    image: lzr
+    container_name: lzr
+    network_mode: "host"
+    volumes:
+      - ./results:/go/src/github.com/stanford-esrg/lzr/results
+      - ./input:/go/src/github.com/stanford-esrg/lzr/input
+    cap_add:
+      - NET_RAW
+  zmap:
+    image: zmap
+    container_name: zmap
+    network_mode: "host"
+    volumes:
+      - ./results:/root/results
+      - ./input:/root/input
+    cap_add:
+      - NET_RAW

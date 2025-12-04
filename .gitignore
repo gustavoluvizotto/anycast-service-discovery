@@ -2,6 +2,8 @@
 /measurements/v6_*.csv
 /measurements/anycast_census_*.csv
 /measurements/input/zmap/anycast_prefixes_*.csv
+/measurements/input/lzr/
+/measurements/input/zmap/*.csv
 /measurements/input/nmap/responsive_anycast_*.csv
 /measurements/input/nmap/zmap_responsive_*.csv
 /measurements/input/nmap/sharding/*

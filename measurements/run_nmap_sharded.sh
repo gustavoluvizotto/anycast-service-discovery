@@ -17,7 +17,5 @@ for f in ${SHARD_DIR}/*.csv; do
     total="${base#*_of_}"           # remove up to "_of_"
     total="${total%%_*}"            # keep everything before next "_"
 
-    ./run_nmap.sh $f $PROTOCOL_VERSION $shard_num $total &
+    ./run_nmap.sh "$f" "$PROTOCOL_VERSION" "$shard_num" "$total"
 done
-
-wait

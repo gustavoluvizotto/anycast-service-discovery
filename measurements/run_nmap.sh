@@ -37,5 +37,5 @@ fi
     # https://nmap.org/book/synscan.html
     # https://nmap.org/book/man-nse.html
     #docker compose run --rm nmap -T4 ${PROTOCOL_VERSION} --script='' --max-retries 3 --min-parallelism 40 --host-timeout 2m --top-ports 2000 -oX "results/nmap/nmap_${TIMESTAMP}_${PROTOCOL_VERSION}${SHARD_TXT}.xml" -iL "${INPUT_FILE}" -n -sS
-    docker compose run --rm -d nmap -T4 ${PROTOCOL_VERSION} --script='safe' --max-retries 3 --host-timeout 2m -oX "results/nmap/nmap_${TIMESTAMP}_${PROTOCOL_VERSION}${SHARD_TXT}.xml" -iL "${INPUT_FILE}" -n -Pn -sT -sV
+    docker compose run --rm -d nmap -T4 ${PROTOCOL_VERSION} --script='safe' --max-retries 3 --host-timeout 10m -oX "results/nmap/nmap_${TIMESTAMP}_${PROTOCOL_VERSION}${SHARD_TXT}.xml" -iL "${INPUT_FILE}" -n -Pn -sT -sV
 } 2> results/nmap/"${TIME_OUTPUT}"

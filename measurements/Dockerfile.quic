@@ -1,0 +1,12 @@
+# Dockerfile
+FROM debian:trixie
+
+RUN apt update 
+
+WORKDIR /app
+
+COPY quic-scanner .
+
+RUN chmod +x quic-scanner
+
+ENTRYPOINT ["/app/quic-scanner"]

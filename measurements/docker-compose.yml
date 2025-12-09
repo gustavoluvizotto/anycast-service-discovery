@@ -22,6 +22,26 @@ services:
       - ./input:/app/input
     cap_add:
       - NET_RAW
+
+  quic:
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    ulimits:
+      nofile:
+        soft: "1000000"
+        hard: "1000000"
+    environment: 
+      - GODEBUG=tlskyber=0
+    build:
+      context: .
+      dockerfile: Dockerfile.quic
+    container_name: quic
+    network_mode: "host"
+    volumes:
+      - ./results:/app/results
+      - ./input:/app/input
+    cap_add:
+      - NET_RAW
   
   zgrab:
     image: ghcr.io/zmap/zgrab2:latest

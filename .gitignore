@@ -10,6 +10,7 @@
 /measurements/input/zgrab/*.csv
 /measurements/results/*
 /measurements/nmap-services
+/measurements/input/zmap/initial_qscanner_1a1a1a1a.pkt
 /venv/*
 /.vscode/*
 /*/.DS_Store

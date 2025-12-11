@@ -22,6 +22,7 @@ services:
       - ./input:/app/input
     cap_add:
       - NET_RAW
+      - NET_ADMIN
 
   quic:
     stdin_open: true # docker run -i

@@ -18,6 +18,9 @@ elif [[ "${PROTOCOL_VERSION}" == "v6" ]]; then
     EXTRA_PARAMS="--resolve-ipv6 --dns-resolvers=[::1]:5335"  # TODO check v6 resolver
 fi
 
-time { \
-    docker compose run --rm zgrab multiple -c input/zgrab/zgrab_config.ini -f "input/zgrab/${INPUT_FILE}" -o "results/zgrab/zgrab_${TIMESTAMP}_${PROTOCOL_VERSION}.jsonl" ${EXTRA_PARAMS}
-} 2> results/zgrab/"${TIME_OUTPUT}"
+# -s is the number of goroutines to use :--help
+# --target-timeout (60s default) is the overall timeout for scanning a single host :--deepwiki
+# --connect-timeout (10s default) is specifically for establishing the initial connection
+#time { \
+    docker compose run --rm zgrab multiple -c input/zgrab/zgrab_config.ini -f "input/zgrab/${INPUT_FILE}" -o "results/zgrab/zgrab_${TIMESTAMP}_${PROTOCOL_VERSION}.jsonl" ${EXTRA_PARAMS} -s 5000
+#} 2> results/zgrab/"${TIME_OUTPUT}"

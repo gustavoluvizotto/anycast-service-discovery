@@ -4,21 +4,16 @@
 /measurements/input/zmap/anycast_prefixes_*.csv
 /measurements/input/lzr/
 /measurements/input/zmap/*.csv
+/measurements/input/zmap/testipv6.txt
 /measurements/input/nmap/responsive_anycast_*.csv
 /measurements/input/nmap/responsive_*.csv
 /measurements/input/nmap/*_responsive_*.csv
 /measurements/input/nmap/sharding/*
-<<<<<<< HEAD
 /measurements/input/nmap/shardingv6/*
 /measurements/input/quic/*.csv
-/measurements/input/zmap/testipv6.txt
-||||||| parent of 35f4155 (upload quic, zgrab input)
-=======
-/measurements/input/nmap/shardingv6/*
->>>>>>> 35f4155 (upload quic, zgrab input)
+/measurements/input/quic/
 /measurements/input/zgrab/*.csv
 /measurements/input/zgrab/top100ports/
-/measurements/input/quic/
 /measurements/results/*
 /measurements/nmap-services
 /measurements/input/zmap/initial_qscanner_1a1a1a1a.pkt

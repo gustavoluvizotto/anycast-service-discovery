@@ -7,3 +7,4 @@ pip_autoremove
 jupyterlab
 ipaddress
 python-libnmap
+pytricia

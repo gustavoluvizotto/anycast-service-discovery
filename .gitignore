@@ -7,9 +7,12 @@
 /measurements/input/zmap/*.csv
 /measurements/input/zmap/testipv6.txt
 /measurements/input/nmap/responsive_anycast_*.csv
+/measurements/input/nmap/nmap_input_*.csv
 /measurements/input/nmap/responsive_*.csv
 /measurements/input/nmap/*_responsive_*.csv
 /measurements/input/nmap/sharding/*
+/measurements/input/nmap/sharding/nl-ens/*
+/measurements/input/nmap/sharding/au-syd/*
 /measurements/input/nmap/shardingv6/*
 /measurements/input/quic/*.csv
 /measurements/input/quic/

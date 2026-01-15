@@ -14,8 +14,8 @@
 /measurements/input/nmap/sharding/nl-ens/*
 /measurements/input/nmap/sharding/au-syd/*
 /measurements/input/nmap/shardingv6/*
+/measurements/input/nmap/missed_*
 /measurements/input/quic/*.csv
-/measurements/input/quic/
 /measurements/input/zgrab/*.csv
 /measurements/input/zgrab/top100ports*/
 /measurements/results/*

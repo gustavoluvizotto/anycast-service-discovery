@@ -17,6 +17,7 @@
 /measurements/input/quic/*.csv
 /measurements/input/zgrab/*.csv
 /measurements/input/zgrab/top100ports*/
+/measurements/input/lzr/*.csv
 /measurements/results/*
 /measurements/nmap-services
 /measurements/input/zmap/initial_qscanner_1a1a1a1a.pkt

@@ -127,12 +127,13 @@ def get_missing_handshakes(handshake_list, is_ephemeral):
         hs_set.add("newlines")
         handshake_list.append("newlines")
 
-    all_hs_set = set(LZR_ALL_HS) - exclude_set
-    missing_set = all_hs_set - hs_set
+    if False:
+        all_hs_set = set(LZR_ALL_HS) - exclude_set
+        missing_set = all_hs_set - hs_set
 
-    # just try hs of everything else then...
-    for hs in missing_set:
-        handshake_list.append(hs)
+        # just try hs of everything else then...
+        for hs in missing_set:
+            handshake_list.append(hs)
 
     return handshake_list
 

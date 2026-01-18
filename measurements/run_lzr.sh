@@ -33,10 +33,9 @@ done < "$PORTS_FILE"
 #fi
 
 for port in "${PORTS[@]}"; do
-    log_file="results/zmap/lzr_${port}_${TIMESTAMP}.log"
+    log_file="results/lzr/lzr_${port}_${TIMESTAMP}.log"
     output_file="results/lzr/lzr_${port}_${TIMESTAMP}.jsonl"
     HS=$(python3 lzr_port_handshake.py --port "${port}")
 
     docker compose run --rm -T --interactive zmap -p "${port}" -w "${INPUT_FILE}" --source-ip="${SRC_IP}" -f "saddr,daddr,sport,dport,seqnum,acknum,window" -O json --output-filter="success=1 && repeat=0" | docker compose run --rm -T --interactive lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -f "${output_file}" &> "${log_file}"
-    break
 done

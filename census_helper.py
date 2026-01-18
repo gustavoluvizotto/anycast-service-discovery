@@ -42,11 +42,21 @@ def download_date(year, month, day, version) -> pd.DataFrame:
     return df
 
 
+def store_prefixes_only(ts, anycast_pdf, version, output_path):
+    gcd_col = "GCD_ICMPv4"
+    if version == "v6":
+        gcd_col = "GCD_ICMPv6"
+    anycast_pdf[anycast_pdf[gcd_col] > 1]["prefix"].to_csv(f"{output_path}/anycast_prefixes_{ts.year}_{ts.month:02d}_{ts.day:02d}_{version}.csv", index=False, header=False)
+
+
 def main(args):
     datetime_obj = datetime.strptime(args.date, "%Y%m%d")
     pdf = download_date(datetime_obj.year, datetime_obj.month, datetime_obj.day, args.ip_version)
     output_path = args.output_dir if args.output_dir else "."
-    pdf.to_csv(f"{output_path}/anycast_census_{datetime_obj.year}_{datetime_obj.month:02d}_{datetime_obj.day:02d}_{args.ip_version}.csv", index=False)
+    if args.prefixes_only:
+        store_prefixes_only(datetime_obj, pdf, args.ip_version, output_path)
+    else:
+        pdf.to_csv(f"{output_path}/anycast_census_{datetime_obj.year}_{datetime_obj.month:02d}_{datetime_obj.day:02d}_{args.ip_version}.csv", index=False)
 
 
 if __name__ == "__main__":
@@ -57,4 +67,6 @@ if __name__ == "__main__":
                         help="Download single snapshot. Format: YYYYMMDD")
     parser.add_argument("--output-dir", required=False, type=str,
                         help="Where to place the csv file. Default: current directory")
+    parser.add_argument("--prefixes-only", action="store_true", required=False,
+                        help="Store a file with only the anycast prefixes with GCD>1 (accurate)")
     main(parser.parse_args())

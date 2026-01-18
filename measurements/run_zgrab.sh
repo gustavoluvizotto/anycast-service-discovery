@@ -15,7 +15,7 @@ TIME_OUTPUT="zgrab_time_${TIMESTAMP}.txt"
 if [[ "${PROTOCOL_VERSION}" == "v4" ]]; then
     EXTRA_PARAMS="--dns-resolvers=127.0.0.1:5335"
 elif [[ "${PROTOCOL_VERSION}" == "v6" ]]; then
-    EXTRA_PARAMS="--resolve-ipv6 --dns-resolvers=[::1]:5335"  # TODO check v6 resolver
+    EXTRA_PARAMS="--resolve-ipv6 --dns-resolvers=[::1]:5335"
 fi
 
 # -s is the number of goroutines to use :--help

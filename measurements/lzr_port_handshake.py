@@ -110,22 +110,19 @@ def get_missing_handshakes(handshake_list, is_ephemeral):
         "newlines50",  # "when sending 50 newline characters... causes the lack of responses." (see LZR paper)
     }
     hs_set = set(handshake_list)
+    
+    if False:
+        if is_ephemeral:
+            for hs in EPHEMERAL_HS:
+                if hs not in hs_set and hs not in exclude_set:
+                    hs_set.add(hs)
+                    handshake_list.append(hs)  # add order to do hs
+        else:
+            for hs in IANA_HS:
+                if hs not in hs_set and hs not in exclude_set:
+                    hs_set.add(hs)
+                    handshake_list.append(hs)  # add order to do hs
 
-    if is_ephemeral:
-        for hs in EPHEMERAL_HS:
-            if hs not in hs_set and hs not in exclude_set:
-                hs_set.add(hs)
-                handshake_list.append(hs)  # add order to do hs
-    else:
-        for hs in IANA_HS:
-            if hs not in hs_set and hs not in exclude_set:
-                hs_set.add(hs)
-                handshake_list.append(hs)  # add order to do hs
-
-    # include newlines hs right after...
-    if "newlines" not in hs_set:
-        hs_set.add("newlines")
-        handshake_list.append("newlines")
 
     if False:
         all_hs_set = set(LZR_ALL_HS) - exclude_set
@@ -134,6 +131,11 @@ def get_missing_handshakes(handshake_list, is_ephemeral):
         # just try hs of everything else then...
         for hs in missing_set:
             handshake_list.append(hs)
+
+        # include newlines hs right after...
+        if "newlines" not in hs_set:
+            hs_set.add("newlines")
+            handshake_list.append("newlines")
 
     return handshake_list
 

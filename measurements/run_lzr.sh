@@ -3,9 +3,10 @@
 INPUT_FILE=$1
 SRC_IP=$2
 IFACE=$3
+VP=$4
 
-if [ -z "$INPUT_FILE" ] || [ -z "$SRC_IP" ] || [ -z "$IFACE" ]; then
-    echo "Usage: $0 <zmap_allowlist_file> <source-ip> <sendInterface>"
+if [ -z "$INPUT_FILE" ] || [ -z "$SRC_IP" ] || [ -z "$IFACE" ] || [ -z "$VP" ]; then
+    echo "Usage: $0 <zmap_allowlist_file> <source-ip> <sendInterface> <vp>"
     exit 1
 fi
 
@@ -38,4 +39,5 @@ for port in "${PORTS[@]}"; do
     HS=$(python3 lzr_port_handshake.py --port "${port}")
 
     docker compose run --rm -T --interactive zmap -p "${port}" -w "${INPUT_FILE}" --source-ip="${SRC_IP}" -f "saddr,daddr,sport,dport,seqnum,acknum,window" -O json --output-filter="success=1 && repeat=0" | docker compose run --rm -T --interactive lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -f "${output_file}" &> "${log_file}"
+    ./upload_lzr_data.sh "${output_file}" "${log_file}" "${TIMESTAMP}" "${port}" "${VP}"
 done

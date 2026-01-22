@@ -21,13 +21,12 @@ ARTIFACT_OBJSTORE_PATH="${ALIAS_NAME}/catrin/artefacts/tool=zgrab/dataset=${DATA
 
 
 # measurements
-mc mv results/zgrab/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.jsonl "${SCAN_OBJSTORE_PATH}/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.jsonl"
+mc mv --no-color --dp results/zgrab/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.jsonl "${SCAN_OBJSTORE_PATH}/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.jsonl"
 
 # artefacts
-mc mv results/zgrab/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.log "${ARTIFACT_OBJSTORE_PATH}/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.log"
+mc mv --no-color --dp results/zgrab/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.log "${ARTIFACT_OBJSTORE_PATH}/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.log"
 
-mc mv results/zgrab/zgrab_time_${PORT_NO}_${TIMESTAMP}.txt "${ARTIFACT_OBJSTORE_PATH}/zgrab_time_${PORT_NO}_${TIMESTAMP}.txt"
+mc mv --no-color --dp results/zgrab/zgrab_time_${PORT_NO}_${TIMESTAMP}.txt "${ARTIFACT_OBJSTORE_PATH}/zgrab_time_${PORT_NO}_${TIMESTAMP}.txt"
 
-mc mv "${INPUT_FILE}" "${ARTIFACT_OBJSTORE_PATH}/$(basename "${INPUT_FILE}")"
-
-mc mv input/zgrab/zgrab_config.ini "${ARTIFACT_OBJSTORE_PATH}/zgrab_config.ini"
+mc mv --no-color --dp "${INPUT_FILE}" "${ARTIFACT_OBJSTORE_PATH}/$(basename "${INPUT_FILE}")"
+mc mv --no-color --dp input/zgrab/zgrab_config.ini "${ARTIFACT_OBJSTORE_PATH}/zgrab_config.ini"

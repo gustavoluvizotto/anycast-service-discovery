@@ -17,7 +17,7 @@ TIMESTAMP=$(TZ=":UTC" date '+%Y%m%d')
 PORTS=()
 while IFS= read -r line; do
     PORTS+=("$line")
-done < "input/zgrab/test_ports.txt"
+done < "input/zgrab/zgrab_ports.txt"
 
 EXTRA_PARAMS=""
 #if [[ "${PROTOCOL_VERSION}" == "v4" ]]; then
@@ -35,7 +35,7 @@ for port in "${PORTS[@]}"; do
     zmap_input_file="input/zmap/anycast_prefixes_${YEAR}_${MONTH}_${DAY}_${PROTOCOL_VERSION}.csv"
     if [ ! -f "${zmap_input_file}" ]; then
         echo "Generating ZMap input file: ${zmap_input_file}"
-        python ../census_helper.py --ip-version ${PROTOCOL_VERSION} --date ${TIMESTAMP} --output-dir input/zmap/ --prefixes-only
+        ../venv/bin/python ../census_helper.py --ip-version ${PROTOCOL_VERSION} --date ${TIMESTAMP} --output-dir input/zmap/ --prefixes-only
     fi
 
     zmap_output_dir="results/zmap"
@@ -54,8 +54,7 @@ for port in "${PORTS[@]}"; do
     # run below if ZMap data is uploaded to objstore
     #python retrieve_zmap_allowlist.py --timestamp ${TIMESTAMP} --port ${port} --dataset ${DATASET} --vp ${VP}
 
-    zgrab_input_file=$(python prepare_zgrab_input.py --timestamp ${TIMESTAMP} --port ${port} --dataset ${DATASET} --vp ${VP} --zmap-file "${zmap_output_file}")
-
+    zgrab_input_file=$(../venv/bin/python prepare_zgrab_input.py --timestamp ${TIMESTAMP} --port ${port} --dataset ${DATASET} --vp ${VP} --zmap-file "${zmap_output_file}")
     zgrab_output_dir="results/zgrab"
     zgrab_time_output="${zgrab_output_dir}/zgrab_time_${port}_${TIMESTAMP}.txt"
     zgrab_output_file="${zgrab_output_dir}/zgrab_${port}_${TIMESTAMP}_${PROTOCOL_VERSION}.jsonl"
@@ -69,6 +68,6 @@ for port in "${PORTS[@]}"; do
     } &> "${zgrab_time_output}"
 
     # upload all data
-    #./upload_zmap_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
-    #./upload_zgrab_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}" "${zgrab_input_file}"
+    ./upload_zmap_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
+    ./upload_zgrab_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}" "${zgrab_input_file}"
 done

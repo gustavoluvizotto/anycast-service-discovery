@@ -29,4 +29,4 @@ mc mv --no-color --dp results/zgrab/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VER
 mc mv --no-color --dp results/zgrab/zgrab_time_${PORT_NO}_${TIMESTAMP}.txt "${ARTIFACT_OBJSTORE_PATH}/zgrab_time_${PORT_NO}_${TIMESTAMP}.txt"
 
 mc mv --no-color --dp "${INPUT_FILE}" "${ARTIFACT_OBJSTORE_PATH}/$(basename "${INPUT_FILE}")"
-mc mv --no-color --dp input/zgrab/zgrab_config.ini "${ARTIFACT_OBJSTORE_PATH}/zgrab_config.ini"
+mc cp --no-color --dp input/zgrab/zgrab_config.ini "${ARTIFACT_OBJSTORE_PATH}/zgrab_config.ini"

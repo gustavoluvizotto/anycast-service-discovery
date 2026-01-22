@@ -25,5 +25,5 @@ ARTIFACT_OBJSTORE_PATH="${ALIAS_NAME}/catrin/artefacts/tool=zmap/dataset=${DATAS
 mc mv --no-color --dp results/zmap/zmap_${PORT_NO}_${TIMESTAMP}.csv "${SCAN_OBJSTORE_PATH}/zmap_${PORT_NO}_${TIMESTAMP}.csv"
 
 # ARTEFACTS
-mc mv --no-color --dp input/zmap/anycast_prefixes_${YEAR}_${MONTH}_${DAY}_${PROTOCOL_VERSION}.csv "${ARTIFACT_OBJSTORE_PATH}/anycast_prefixes_${YEAR}_${MONTH}_${DAY}_${PROTOCOL_VERSION}.csv"
+mc cp --no-color --dp input/zmap/anycast_prefixes_${YEAR}_${MONTH}_${DAY}_${PROTOCOL_VERSION}.csv "${ARTIFACT_OBJSTORE_PATH}/anycast_prefixes_${YEAR}_${MONTH}_${DAY}_${PROTOCOL_VERSION}.csv"
 mc mv --no-color --dp results/zmap/zmap_time_${PORT_NO}_${TIMESTAMP}.txt "${ARTIFACT_OBJSTORE_PATH}/zmap_time_${PORT_NO}_${TIMESTAMP}.txt"

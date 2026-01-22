@@ -1,3 +1,5 @@
+/*/__pycache__/
+/measurements/credentials.py
 /measurements/internet_address_verfploeter_hitlist_*.csv
 /measurements/v6_*.csv
 /measurements/oi_v6_20251215.csv
@@ -17,6 +19,7 @@
 /measurements/input/quic/*.csv
 /measurements/input/zgrab/*.csv
 /measurements/input/zgrab/top100ports*/
+/measurements/input/zgrab/dataset=*
 /measurements/input/lzr/*.csv
 /measurements/results/*
 /measurements/nmap-services

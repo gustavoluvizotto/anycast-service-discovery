@@ -1,13 +1,33 @@
 #!/bin/bash
 
-# artefacts
-mc cp results/zgrab/zgrab_20251214090624_v4_full.log zgrab-write/catrin/artefacts/tool=zgrab/dataset=tcp-anycast/vp=nl-ens/port=top100/year=2025/month=12/day=14/zgrab_20251214090624_v4_full.log
+PORT_NO=$1
+DATASET=$2  # dataset=default (TCP scans), dataset=udp (UDP scans), dataset=quic (QUIC scans), dataset=tcp-anycast (tcp on anycast prefixes)
+VP=$3  # vantage point. Format: country_alpha2-city_alpha3, e.g., nl-ens
+TIMESTAMP=$4
+PROTOCOL_VERSION=$5
+INPUT_FILE=$6
 
-mc cp results/zgrab/zgrab_time_20251214090624.txt zgrab-write/catrin/artefacts/tool=zgrab/dataset=tcp-anycast/vp=nl-ens/port=top100/year=2025/month=12/day=14/zgrab_time_20251214090624.txt
+if [ -z "$PORT_NO" ] || [ -z "$DATASET" ] || [ -z "$VP" ] || [ -z "$TIMESTAMP" ] || [ -z "$PROTOCOL_VERSION" ] || [ -z "$INPUT_FILE" ]; then
+    echo "Usage: $0 <port_no> <dataset> <vantage_point> <timestamp> <protocol_version> <input_file>"
+    exit 1
+fi
 
-mc cp input/zgrab/zgrab_input_100ports_tcp-anycast_v4.csv zgrab-write/catrin/artefacts/tool=zgrab/dataset=tcp-anycast/vp=nl-ens/port=top100/year=2025/month=12/day=14/zgrab_input_100ports_tcp-anycast_v4.csv
+YEAR=$(echo ${TIMESTAMP} | cut -c1-4)
+MONTH=$(echo ${TIMESTAMP} | cut -c5-6)
+DAY=$(echo ${TIMESTAMP} | cut -c7-8)
+ALIAS_NAME="zgrab-write"
+SCAN_OBJSTORE_PATH="${ALIAS_NAME}/catrin/measurements/tool=zgrab/dataset=${DATASET}/format=raw/vp=${VP}/port=${PORT_NO}/year=${YEAR}/month=${MONTH}/day=${DAY}"
+ARTIFACT_OBJSTORE_PATH="${ALIAS_NAME}/catrin/artefacts/tool=zgrab/dataset=${DATASET}/vp=${VP}/port=${PORT_NO}/year=${YEAR}/month=${MONTH}/day=${DAY}"
 
-mc cp input/zgrab/zgrab_config.ini zgrab-write/catrin/artefacts/tool=zgrab/dataset=tcp-anycast/vp=nl-ens/port=top100/year=2025/month=12/day=14/zgrab_config.ini
 
 # measurements
-mc cp results/zgrab/zgrab_20251214090624_v4.jsonl zgrab-write/catrin/measurements/tool=zgrab/dataset=tcp-anycast/format=raw/vp=nl-ens/port=top100/year=2025/month=12/day=14/zgrab_20251214090624_v4.jsonl
+mc mv results/zgrab/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.jsonl "${SCAN_OBJSTORE_PATH}/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.jsonl"
+
+# artefacts
+mc mv results/zgrab/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.log "${ARTIFACT_OBJSTORE_PATH}/zgrab_${PORT_NO}_${TIMESTAMP}_${PROTOCOL_VERSION}.log"
+
+mc mv results/zgrab/zgrab_time_${PORT_NO}_${TIMESTAMP}.txt "${ARTIFACT_OBJSTORE_PATH}/zgrab_time_${PORT_NO}_${TIMESTAMP}.txt"
+
+mc mv "${INPUT_FILE}" "${ARTIFACT_OBJSTORE_PATH}/$(basename "${INPUT_FILE}")"
+
+mc mv input/zgrab/zgrab_config.ini "${ARTIFACT_OBJSTORE_PATH}/zgrab_config.ini"

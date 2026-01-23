@@ -37,6 +37,7 @@ for port in "${PORTS[@]}"; do
     ZMAP_EXTRA_PARAMS=""
     # ZMap UDP module probes:
     # https://github.com/zmap/zmap/tree/main/examples/udp-probes
+    # these ports must run separately and manually because of the iptables rule of LZR that has to be undone
     if [ $port == "53" ]; then
         ZMAP_EXTRA_PARAMS="-M udp --probe-args=file:input/zmap/dns_53.pkt"
         udp_dataset=udp$(echo ${DATASET} | sed 's/tcp//Ig')
@@ -51,7 +52,7 @@ for port in "${PORTS[@]}"; do
         { time \
             docker compose run --rm \
             zmap -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
-                -o "${zmap_output_file}" -O json -f "saddr,window,ttl" \
+                -o "${zmap_output_file}" -O json -f "saddr,ttl" \
                 --output-filter="success=1 && repeat=0";
         } 2> "${zmap_time_output}"
 

@@ -38,6 +38,15 @@ for port in "${PORTS[@]}"; do
         ../venv/bin/python ../census_helper.py --ip-version ${PROTOCOL_VERSION} --date ${TIMESTAMP} --output-dir input/zmap/ --prefixes-only
     fi
 
+    ZMAP_EXTRA_PARAMS=""
+    if [ $port == "53" ]; then
+        ZMAP_EXTRA_PARAMS="-M udp --probe-args=file:input/zmap/dns_53.pkt"
+        udp_dataset=udp$(echo ${DATASET} | sed 's/tcp//Ig')
+    elif [ $port == "123" ]; then
+        ZMAP_EXTRA_PARAMS="-M udp --probe-args=file:input/zmap/ntp_123.pkt"
+        udp_dataset=udp$(echo ${DATASET} | sed 's/tcp//Ig')
+    fi
+
     zmap_output_dir="results/zmap"
     zmap_output_file="${zmap_output_dir}/zmap_${port}_${TIMESTAMP}.csv"
     zmap_time_output="${zmap_output_dir}/zmap_time_${port}_${TIMESTAMP}.txt"
@@ -46,10 +55,16 @@ for port in "${PORTS[@]}"; do
     echo "Running ZMap for port ${port}..."
     { time \
         docker compose run --rm \
-        zmap -B 50M -p "${port}" -w "${zmap_input_file}" \
-            -o "${zmap_output_file}" -O csv \
+        zmap -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
+            -o "${zmap_output_file}" -O csv -f "saddr,ttl,window" \
             --output-filter="success=1 && repeat=0";
     } 2> "${zmap_time_output}"
+
+    if [ $port == "53" ] || [ $port == "123" ]; then
+        ./upload_zmap_data.sh "${port}" "${udp_dataset}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
+        # no need to run zgrab for UDP ports...
+        continue
+    fi
 
     # run below if ZMap data is uploaded to objstore
     #python retrieve_zmap_allowlist.py --timestamp ${TIMESTAMP} --port ${port} --dataset ${DATASET} --vp ${VP}

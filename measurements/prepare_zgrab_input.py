@@ -96,6 +96,7 @@ def main(args):
                 zgrab_ports.add(port)
         for port in zgrab_port_module_map.keys():
             zgrab_ports.add(port)
+        zgrab_ports.add(123) # NTP that is missing; for ZMap UDP scans
         with open("input/zgrab/zgrab_ports.txt", "w") as f:
             for port in list(zgrab_ports):
                 f.write(f"{port}\n")

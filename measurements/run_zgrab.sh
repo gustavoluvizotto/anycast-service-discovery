@@ -47,7 +47,7 @@ for port in "${PORTS[@]}"; do
     fi
 
     zmap_output_dir="results/zmap"
-    zmap_output_file="${zmap_output_dir}/zmap_${port}_${TIMESTAMP}.csv"
+    zmap_output_file="${zmap_output_dir}/zmap_${port}_${TIMESTAMP}.json"
     zmap_time_output="${zmap_output_dir}/zmap_time_${port}_${TIMESTAMP}.txt"
     mkdir -p "${zmap_output_dir}"
     # run zmap!

@@ -22,17 +22,6 @@ while IFS= read -r line; do
     PORTS+=("$line")
 done < "input/lzr/lzr_ports.txt"
 
-# ZMap UDP module probes:
-# https://github.com/zmap/zmap/tree/main/examples/udp-probes
-# scan these separately because LZR doesn't have NTP and DNS is commonly on UDP
-#MODULE=""
-#if [ "${port}" -eq 123 ]; then
-#    MODULE="-M udp --probe-args=file:input/zmap/ntp_123.pkt"
-#fi
-#if [ "${port}" -eq 53 ]; then
-#    MODULE="-M udp --probe-args=file:input/zmap/dns_53.pkt"
-#fi
-
 for port in "${PORTS[@]}"; do
     # create zmap allowlist...
     YEAR=$(echo ${TIMESTAMP} | cut -c1-4)
@@ -44,9 +33,35 @@ for port in "${PORTS[@]}"; do
         ../venv/bin/python ../census_helper.py --ip-version ${PROTOCOL_VERSION} --date ${TIMESTAMP} --output-dir input/zmap/ --prefixes-only
     fi
 
+    zmap_output_file="results/zmap/zmap_${port}_${TIMESTAMP}.jsonl"
+    ZMAP_EXTRA_PARAMS=""
+    # ZMap UDP module probes:
+    # https://github.com/zmap/zmap/tree/main/examples/udp-probes
+    if [ $port == "53" ]; then
+        ZMAP_EXTRA_PARAMS="-M udp --probe-args=file:input/zmap/dns_53.pkt"
+        udp_dataset=udp$(echo ${DATASET} | sed 's/tcp//Ig')
+    elif [ $port == "123" ]; then
+        ZMAP_EXTRA_PARAMS="-M udp --probe-args=file:input/zmap/ntp_123.pkt"
+        udp_dataset=udp$(echo ${DATASET} | sed 's/tcp//Ig')
+    fi
+    if [ $port == "53" ] || [ $port == "123" ]; then
+        zmap_time_output="results/zmap/zmap_time_${port}_${TIMESTAMP}.txt"
+        # run zmap!
+        echo "Running ZMap for port ${port}..."
+        { time \
+            docker compose run --rm \
+            zmap -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
+                -o "${zmap_output_file}" -O json -f "saddr,window,ttl" \
+                --output-filter="success=1 && repeat=0";
+        } 2> "${zmap_time_output}"
+
+        ./upload_zmap_data.sh "${port}" "${udp_dataset}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
+        # no need to run zgrab for UDP ports...
+        continue
+    fi
+
     log_file="results/lzr/lzr_${port}_${TIMESTAMP}.log"
     output_file="results/lzr/lzr_${port}_${TIMESTAMP}.jsonl"
-    zmap_output_file="results/zmap/zmap_${port}_${TIMESTAMP}.jsonl"
     HS=$(../venv/bin/python3 lzr_port_handshake.py --port "${port}")
 
     docker compose run --rm -T --interactive \
@@ -54,7 +69,8 @@ for port in "${PORTS[@]}"; do
         -f "saddr,daddr,sport,dport,seqnum,acknum,window" -O json \
         --output-filter="success=1 && repeat=0" \
     | tee "${zmap_output_file}" \
-    | docker compose run --rm -T --interactive lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -f "${output_file}" &> "${log_file}"
+    | docker compose run --rm -T --interactive \
+        lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -f "${output_file}" &> "${log_file}"
 
     # upload all data
     ./upload_zmap_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"

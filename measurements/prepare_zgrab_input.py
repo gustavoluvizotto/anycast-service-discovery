@@ -77,13 +77,13 @@ def get_zgrab_tag(port):
 def prepare_zgrab_input(zmap_file: str, timestamp: str, port: int, dataset: str, vp: str) -> str:
     # create a file with saddr,domain,tag,port
     zgrab_tag = get_zgrab_tag(port)
-    pdf = pd.read_csv(zmap_file)
+    pdf = pd.read_json(zmap_file, lines=True)
     pdf["domain"] = ""
     pdf["tag"] = zgrab_tag
     pdf["port"] = port
     os.makedirs(ZGRAB_INPUT_DIR, exist_ok=True)
     output_file = f"{ZGRAB_INPUT_DIR}/zgrab_input_{timestamp}_{port}.csv"
-    pdf.to_csv(output_file, index=False, header=False)
+    pdf[["saddr", "domain", "tag", "port"]].to_csv(output_file, index=False, header=False)
     return output_file
 
 

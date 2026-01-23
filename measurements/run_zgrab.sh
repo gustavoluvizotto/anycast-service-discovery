@@ -7,7 +7,7 @@ DATASET=$2
 VP=$3
 
 if [ -z $PROTOCOL_VERSION ] || [ -z $DATASET ] || [ -z $VP ]; then
-    echo "Usage: $0 <protocol_version=v4|v6> <dataset> <vp>"
+    echo "Usage (this order): $0 <protocol_version=v4|v6> <dataset> <vp>"
     exit 1
 fi
 
@@ -28,7 +28,6 @@ EXTRA_PARAMS=""
 
 for port in "${PORTS[@]}"; do
     # create zmap allowlist...
-
     YEAR=$(echo ${TIMESTAMP} | cut -c1-4)
     MONTH=$(echo ${TIMESTAMP} | cut -c5-6)
     DAY=$(echo ${TIMESTAMP} | cut -c7-8)
@@ -56,7 +55,7 @@ for port in "${PORTS[@]}"; do
     { time \
         docker compose run --rm \
         zmap -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
-            -o "${zmap_output_file}" -O csv -f "saddr,ttl,window" \
+            -o "${zmap_output_file}" -O json -f "saddr,ttl,window" \
             --output-filter="success=1 && repeat=0";
     } 2> "${zmap_time_output}"
 
@@ -83,6 +82,6 @@ for port in "${PORTS[@]}"; do
     } &> "${zgrab_time_output}"
 
     # upload all data
-    ./upload_zmap_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
+    ./upload_zmap_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}" csv
     ./upload_zgrab_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}" "${zgrab_input_file}"
 done

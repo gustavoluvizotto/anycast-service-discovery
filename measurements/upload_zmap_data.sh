@@ -10,7 +10,7 @@ TIMESTAMP=$4
 PROTOCOL_VERSION=$5
 
 if [ -z "$PORT_NO" ] || [ -z "$DATASET" ] || [ -z "$VP" ] || [ -z "$TIMESTAMP" ] || [ -z "$PROTOCOL_VERSION" ]; then
-    echo "Usage: $0 <port_no> <dataset> <vantage_point> <timestamp> <protocol_version>"
+    echo "Usage: $0 <port_no> <dataset> <vantage_point> <timestamp> <protocol_version> <extension>"
     exit 1
 fi
 
@@ -22,8 +22,11 @@ SCAN_OBJSTORE_PATH="${ALIAS_NAME}/catrin/measurements/tool=zmap/dataset=${DATASE
 ARTIFACT_OBJSTORE_PATH="${ALIAS_NAME}/catrin/artefacts/tool=zmap/dataset=${DATASET}/vp=${VP}/port=${PORT_NO}/year=${YEAR}/month=${MONTH}/day=${DAY}"
 
 # SCAN DATA
-mc mv --no-color --dp results/zmap/zmap_${PORT_NO}_${TIMESTAMP}.csv "${SCAN_OBJSTORE_PATH}/zmap_${PORT_NO}_${TIMESTAMP}.csv"
+mc mv --no-color --dp results/zmap/zmap_${PORT_NO}_${TIMESTAMP}.jsonl "${SCAN_OBJSTORE_PATH}/zmap_${PORT_NO}_${TIMESTAMP}.jsonl"
 
 # ARTEFACTS
 mc cp --no-color --dp input/zmap/anycast_prefixes_${YEAR}_${MONTH}_${DAY}_${PROTOCOL_VERSION}.csv "${ARTIFACT_OBJSTORE_PATH}/anycast_prefixes_${YEAR}_${MONTH}_${DAY}_${PROTOCOL_VERSION}.csv"
-mc mv --no-color --dp results/zmap/zmap_time_${PORT_NO}_${TIMESTAMP}.txt "${ARTIFACT_OBJSTORE_PATH}/zmap_time_${PORT_NO}_${TIMESTAMP}.txt"
+
+if [ -f results/zmap/zmap_time_${PORT_NO}_${TIMESTAMP}.txt ]; then
+    mc mv --no-color --dp results/zmap/zmap_time_${PORT_NO}_${TIMESTAMP}.txt "${ARTIFACT_OBJSTORE_PATH}/zmap_time_${PORT_NO}_${TIMESTAMP}.txt"
+fi

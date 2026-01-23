@@ -17,6 +17,6 @@ YEAR=${TIMESTAMP:0:4}
 MONTH=${TIMESTAMP:4:2}
 DAY=${TIMESTAMP:6:2}
 
-mc mv --no-color --dp "${OUTPUT_FILE}" "${ALIAS}/${BUCKET_NAME}"/measurements/tool=lzr/dataset=${DATASET}/format=raw/vp="${VP}"/port="${PORT}"/year="${YEAR}"/month="${MONTH}"/day="${DAY}"/"${FILENAME}"
+mc mv --no-color --dp "results/lzr/lzr_${PORT}_${TIMESTAMP}.jsonl" "${ALIAS}/${BUCKET_NAME}/measurements/tool=lzr/dataset=${DATASET}/format=raw/vp=${VP}/port=${PORT}/year=${YEAR}/month=${MONTH}/day=${DAY}/lzr_${PORT}_${TIMESTAMP}.jsonl"
 
-mc mv --no-color --dp "results/lzr/lzr_${PORT}_${TIMESTAMP}.log" "${ALIAS}/${BUCKET_NAME}"/artefacts/tool=lzr/dataset=${DATASET}/vp="${VP}"/port="${PORT}"/year="${YEAR}"/month="${MONTH}"/day="${DAY}"/lzr_${PORT}_${TIMESTAMP}.log"
+mc mv --no-color --dp "results/lzr/lzr_${PORT}_${TIMESTAMP}.log" "${ALIAS}/${BUCKET_NAME}/artefacts/tool=lzr/dataset=${DATASET}/vp=${VP}/port=${PORT}/year=${YEAR}/month=${MONTH}/day=${DAY}/lzr_${PORT}_${TIMESTAMP}.log"

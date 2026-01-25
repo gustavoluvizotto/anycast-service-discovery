@@ -67,7 +67,7 @@ for port in "${PORTS[@]}"; do
 
     docker compose run --rm -T --interactive \
         zmap -p "${port}" -w "${zmap_input_file}" --source-ip="${SRC_IP}" \
-        -f "saddr,daddr,sport,dport,seqnum,acknum,window" -O json \
+        -f "saddr,daddr,sport,dport,seqnum,acknum,window,ttl" -O json \
         --output-filter="success=1 && repeat=0" \
     | tee "${zmap_output_file}" \
     | docker compose run --rm -T --interactive \

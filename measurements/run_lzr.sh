@@ -23,10 +23,19 @@ while IFS= read -r line; do
 done < "input/lzr/lzr_ports.txt"
 
 # retrieve blocklist
-wget "https://gitlab.utwente.nl/m7711402/internet-wide-scans/-/raw/main/blocklist.txt?ref_type=heads&inline=false" -P input/zmap/
+wget "https://gitlab.utwente.nl/m7711402/internet-wide-scans/-/raw/main/blocklist.txt" -P input/zmap/
 BLOCKLIST="input/zmap/blocklist.txt"
 
 for port in "${PORTS[@]}"; do
+    CLEAN_BLOCKLIST="input/zmap/blocklist_${port}.txt"
+
+    awk -F'[:# ]' -v port="${port}" '{
+        if ($2 == "")
+            print $1, "  #", $5;
+        else if ($2 == port)
+            print $1, "  #", $6;
+    }' < "${BLOCKLIST}" > "${CLEAN_BLOCKLIST}"
+
     # create zmap allowlist...
     YEAR=$(echo ${TIMESTAMP} | cut -c1-4)
     MONTH=$(echo ${TIMESTAMP} | cut -c5-6)
@@ -55,7 +64,7 @@ for port in "${PORTS[@]}"; do
         echo "Running ZMap for port ${port}..."
         { time \
             docker compose run --rm \
-            zmap -b ${BLOCKLIST} -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
+            zmap -b ${CLEAN_BLOCKLIST} -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
                 -o "${zmap_output_file}" -O json -f "saddr,ttl" \
                 --output-filter="success=1 && repeat=0";
         } 2> "${zmap_time_output}"
@@ -71,7 +80,7 @@ for port in "${PORTS[@]}"; do
     HS=$(../venv/bin/python3 lzr_port_handshake.py --port "${port}")
 
     docker compose run --rm -T --interactive \
-        zmap -b ${BLOCKLIST} -p "${port}" -w "${zmap_input_file}" --source-ip="${SRC_IP}" \
+        zmap -b ${CLEAN_BLOCKLIST} -p "${port}" -w "${zmap_input_file}" --source-ip="${SRC_IP}" \
         -f "saddr,daddr,sport,dport,seqnum,acknum,window,ttl" -O json \
         --output-filter="success=1 && repeat=0" \
     | tee "${zmap_output_file}" \

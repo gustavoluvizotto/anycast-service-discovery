@@ -22,6 +22,10 @@ while IFS= read -r line; do
     PORTS+=("$line")
 done < "input/lzr/lzr_ports.txt"
 
+# retrieve blocklist
+wget "https://gitlab.utwente.nl/m7711402/internet-wide-scans/-/raw/main/blocklist.txt?ref_type=heads&inline=false" -P input/zmap/
+BLOCKLIST="input/zmap/blocklist.txt"
+
 for port in "${PORTS[@]}"; do
     # create zmap allowlist...
     YEAR=$(echo ${TIMESTAMP} | cut -c1-4)
@@ -51,7 +55,7 @@ for port in "${PORTS[@]}"; do
         echo "Running ZMap for port ${port}..."
         { time \
             docker compose run --rm \
-            zmap -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
+            zmap -b ${BLOCKLIST} -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
                 -o "${zmap_output_file}" -O json -f "saddr,ttl" \
                 --output-filter="success=1 && repeat=0";
         } 2> "${zmap_time_output}"
@@ -61,19 +65,21 @@ for port in "${PORTS[@]}"; do
         continue
     fi
 
+    sudo iptables -A OUTPUT -p tcp --tcp-flags RST RST -s ${SRC_IP} -j DROP
     log_file="results/lzr/lzr_${port}_${TIMESTAMP}.log"
     output_file="results/lzr/lzr_${port}_${TIMESTAMP}.jsonl"
     HS=$(../venv/bin/python3 lzr_port_handshake.py --port "${port}")
 
     docker compose run --rm -T --interactive \
-        zmap -p "${port}" -w "${zmap_input_file}" --source-ip="${SRC_IP}" \
+        zmap -b ${BLOCKLIST} -p "${port}" -w "${zmap_input_file}" --source-ip="${SRC_IP}" \
         -f "saddr,daddr,sport,dport,seqnum,acknum,window,ttl" -O json \
         --output-filter="success=1 && repeat=0" \
     | tee "${zmap_output_file}" \
     | docker compose run --rm -T --interactive \
-        lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -f "${output_file}" &> "${log_file}"
+        lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -t 10 -f "${output_file}" &> "${log_file}"
 
     # upload all data
     ./upload_zmap_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
     ./upload_lzr_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
+    sudo iptables -D OUTPUT 1
 done

@@ -23,7 +23,7 @@ while IFS= read -r line; do
 done < "input/lzr/lzr_ports.txt"
 
 # retrieve blocklist
-wget "https://gitlab.utwente.nl/m7711402/internet-wide-scans/-/raw/main/blocklist.txt" -P input/zmap/
+wget -O input/zmap/blocklist.txt "https://gitlab.utwente.nl/m7711402/internet-wide-scans/-/raw/main/blocklist.txt"
 BLOCKLIST="input/zmap/blocklist.txt"
 
 for port in "${PORTS[@]}"; do

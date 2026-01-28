@@ -1,0 +1,13 @@
+diff --git a/scan.sh b/scan.sh
+index 17fb050..b680cdd 100755
+--- a/scan.sh
++++ b/scan.sh
+@@ -66,7 +66,7 @@ mv "${BLOCKLIST_NOTS}" "shared_dir/${BLOCKLIST}"
+ # --output-filter="a filter for only successful, non-duplicate responses" - zmap man page
+ { time \
+     docker run --network=host --rm --cap-add=NET_RAW -v "$(pwd)"/shared_dir:/root/shared_dir \
+-    zmap -b shared_dir/"${BLOCKLIST}" -B "${BANDWIDTH}" -p "${PORT_NO}" -w shared_dir/"${ALLOWLIST}" \
++    zmap -b shared_dir/"${BLOCKLIST}" -B "${BANDWIDTH}" -p "${PORT_NO}" -w shared_dir/"${ALLOWLIST}" -M udp --probe-args=file:shared_dir/initial_qscanner_1a1a1a1a.pkt \
+          -o shared_dir/"${FILENAME}" -O "${EXTENSION}" --output-filter="success=1 && repeat=0" \
+          --seed=1234 2> shared_dir/"${SCAN_ERROR}" > shared_dir/"${SCAN_OUTPUT}";
+ } 2> shared_dir/"${TIME_OUTPUT}"

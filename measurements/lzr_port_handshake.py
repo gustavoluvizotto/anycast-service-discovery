@@ -153,6 +153,8 @@ def main(args):
                 lzr_ports.add(port)
         for port in lzr_port_hs_map.keys():
             lzr_ports.add(port)
+        lzr_ports.add(853)  # DoQ
+        lzr_ports.add(123)  # NTP
         with open("measurements/input/lzr/lzr_ports.txt", "w") as f:
             for port in list(lzr_ports):
                 f.write(f"{port}\n")

@@ -10,7 +10,7 @@ TIMESTAMP=$4
 PROTOCOL_VERSION=$5
 
 if [ -z "$PORT_NO" ] || [ -z "$DATASET" ] || [ -z "$VP" ] || [ -z "$TIMESTAMP" ] || [ -z "$PROTOCOL_VERSION" ]; then
-    echo "Usage: $0 <port_no> <dataset> <vantage_point> <timestamp> <protocol_version> <extension>"
+    echo "Usage: $0 <port_no> <dataset> <vantage_point> <timestamp> <protocol_version>"
     exit 1
 fi
 

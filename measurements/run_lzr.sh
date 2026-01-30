@@ -53,10 +53,10 @@ for port in "${PORTS[@]}"; do
     # these ports must run separately and manually because of the iptables rule of LZR that has to be undone
     if [ $port == "53" ]; then
         ZMAP_EXTRA_PARAMS="-M udp --probe-args=file:input/zmap/dns_53.pkt"
-        udp_dataset=udp$(echo ${DATASET} | sed 's/tcp//Ig')
+        udp_dataset=$(echo ${DATASET} | sed 's/tcp/udp/Ig')
     elif [ $port == "123" ]; then
         ZMAP_EXTRA_PARAMS="-M udp --probe-args=file:input/zmap/ntp_123.pkt"
-        udp_dataset=udp$(echo ${DATASET} | sed 's/tcp//Ig')
+        udp_dataset=$(echo ${DATASET} | sed 's/tcp/udp/Ig')
     fi
     if [ $port == "53" ] || [ $port == "123" ]; then
         zmap_time_output="results/zmap/zmap_time_${port}_${TIMESTAMP}.txt"
@@ -65,7 +65,7 @@ for port in "${PORTS[@]}"; do
         { time \
             docker compose run --rm \
             zmap -b ${CLEAN_BLOCKLIST} -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
-                -o "${zmap_output_file}" -O json -f "saddr,ttl" \
+                -o "${zmap_output_file}" -O json -f "saddr,ttl,data" \
                 --output-filter="success=1 && repeat=0";
         } 2> "${zmap_time_output}"
 

@@ -67,7 +67,7 @@ for port in "${PORTS[@]}"; do
     if [ $port == "53" ] || [ $port == "123" ] || [ $port == "853" ] || [ $port == "443" ]; then
         zmap_time_output="results/zmap/zmap_time_${port}_${TIMESTAMP}.txt"
         # run zmap!
-        echo "Running ZMap for port ${port}..."
+        echo "Running ZMap UDP for port ${port}..."
         { time \
             docker compose run --rm \
             zmap -b ${CLEAN_BLOCKLIST} -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
@@ -77,13 +77,14 @@ for port in "${PORTS[@]}"; do
     fi
 
     if [ $port == "53" ] || [ $port == "123" ]; then
-        # no need to run LZR for those UDP ports...
+        # no need to run LZR or QUIC for those UDP ports...
         ./upload_zmap_data.sh "${port}" "${udp_dataset}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
         continue
     fi
 
     # run QUIC scans
     if [ $port == "853" ] || [ $port == "443" ]; then
+        echo "Running QUIC scan for port ${port}..."
         if [ $port == "853" ]; then
             ALPN="doq"
         else
@@ -107,6 +108,8 @@ for port in "${PORTS[@]}"; do
     fi
 
     # RUN LZR for TCP ports
+    echo "Running LZR for port ${port}..."
+
     sudo iptables -A OUTPUT -p tcp --tcp-flags RST RST -s ${SRC_IP} -j DROP
     log_file="results/lzr/lzr_${port}_${TIMESTAMP}.log"
     output_file="results/lzr/lzr_${port}_${TIMESTAMP}.jsonl"

@@ -15,7 +15,7 @@ ALPN=$3
 BUCKET_REFILL_DURATION=2
 BUCKET_SIZE=500
 
-TIMESTAMP=$(TZ=":UTC" date '+%Y%m%d%')
+TIMESTAMP=$(TZ=":UTC" date '+%Y%m%d')
 OUTPUT_DIR="results/quic/quic_${PROTOCOL_VERSION}_${ALPN}_${TIMESTAMP}"
 
 if [[ "${ALPN}" == "h3" ]]; then

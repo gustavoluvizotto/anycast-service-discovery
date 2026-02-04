@@ -47,8 +47,9 @@ for port in "${PORTS[@]}"; do
         ../venv/bin/python ../census_helper.py --ip-version ${PROTOCOL_VERSION} --date ${TIMESTAMP} --output-dir input/zmap/ --prefixes-only
     fi
 
-    # ZMap UDP module
     zmap_output_file="results/zmap/zmap_${port}_${TIMESTAMP}.jsonl"
+
+    # ZMap UDP module
     ZMAP_EXTRA_PARAMS=""
     # probes
     # https://github.com/zmap/zmap/tree/main/examples/udp-probes
@@ -121,7 +122,7 @@ for port in "${PORTS[@]}"; do
         --output-filter="success=1 && repeat=0" \
     | tee "${zmap_output_file}" \
     | docker compose run --rm -T --interactive \
-        lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -t 10 -c 60 -f "${output_file}" &> "${log_file}"
+        lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -t 10 -c 300 -f "${output_file}" &> "${log_file}"
 
     # upload LZR data
     ./upload_zmap_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"

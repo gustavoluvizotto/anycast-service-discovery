@@ -121,7 +121,7 @@ for port in "${PORTS[@]}"; do
         --output-filter="success=1 && repeat=0" \
     | tee "${zmap_output_file}" \
     | docker compose run --rm -T --interactive \
-        lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -t 10 -c 30 -f "${output_file}" &> "${log_file}"
+        lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -t 10 -c 60 -f "${output_file}" &> "${log_file}"
 
     # upload LZR data
     ./upload_zmap_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"

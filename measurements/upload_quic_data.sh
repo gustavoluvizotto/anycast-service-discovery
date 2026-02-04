@@ -16,8 +16,6 @@ YEAR=$(echo ${TIMESTAMP} | cut -c1-4)
 MONTH=$(echo ${TIMESTAMP} | cut -c5-6)
 DAY=$(echo ${TIMESTAMP} | cut -c7-8)
 ALIAS_NAME="quic-write"
-SCAN_OBJSTORE_PATH=
-ARTIFACT_OBJSTORE_PATH=
 
 # ARTEFACTS
 mc mv results/quic/quic_${PROTOCOL_VERSION}_${ALPN}_${TIMESTAMP}/logs "${ALIAS_NAME}/catrin/artefacts/tool=quic/dataset=${DATASET}/vp=${VP}/alpn=${ALPN}/port=${PORT_NO}/year=${YEAR}/month=${MONTH}/day=${DAY}"/logs

@@ -27,6 +27,7 @@ wget -O input/zmap/blocklist.txt "https://gitlab.utwente.nl/m7711402/internet-wi
 BLOCKLIST="input/zmap/blocklist.txt"
 
 for port in "${PORTS[@]}"; do
+    # prepare blocklist for this port
     CLEAN_BLOCKLIST="input/zmap/blocklist_${port}.txt"
 
     awk -F'[:# ]' -v port="${port}" '{
@@ -47,32 +48,68 @@ for port in "${PORTS[@]}"; do
     fi
 
     zmap_output_file="results/zmap/zmap_${port}_${TIMESTAMP}.jsonl"
+
+    # ZMap UDP module
     ZMAP_EXTRA_PARAMS=""
-    # ZMap UDP module probes:
+    # probes
     # https://github.com/zmap/zmap/tree/main/examples/udp-probes
     # these ports must run separately and manually because of the iptables rule of LZR that has to be undone
     if [ $port == "53" ]; then
         ZMAP_EXTRA_PARAMS="-M udp --probe-args=file:input/zmap/dns_53.pkt"
-        udp_dataset=udp$(echo ${DATASET} | sed 's/tcp//Ig')
+        udp_dataset=$(echo ${DATASET} | sed 's/tcp/udp/Ig')
     elif [ $port == "123" ]; then
         ZMAP_EXTRA_PARAMS="-M udp --probe-args=file:input/zmap/ntp_123.pkt"
-        udp_dataset=udp$(echo ${DATASET} | sed 's/tcp//Ig')
+        udp_dataset=$(echo ${DATASET} | sed 's/tcp/udp/Ig')
+    elif [ $port == "853" ] || [ $port == "443" ]; then
+        ZMAP_EXTRA_PARAMS="-M udp --probe-args=file:input/zmap/initial_qscanner_1a1a1a1a.pkt"
+        udp_dataset=$(echo ${DATASET} | sed 's/tcp/udp/Ig')
     fi
-    if [ $port == "53" ] || [ $port == "123" ]; then
+
+    if [ $port == "53" ] || [ $port == "123" ] || [ $port == "853" ] || [ $port == "443" ]; then
         zmap_time_output="results/zmap/zmap_time_${port}_${TIMESTAMP}.txt"
         # run zmap!
-        echo "Running ZMap for port ${port}..."
+        echo "Running ZMap UDP for port ${port}..."
         { time \
             docker compose run --rm \
             zmap -b ${CLEAN_BLOCKLIST} -B 50M -p "${port}" -w "${zmap_input_file}" ${ZMAP_EXTRA_PARAMS} \
-                -o "${zmap_output_file}" -O json -f "saddr,ttl" \
+                -o "${zmap_output_file}" -O json -f "saddr,ttl,data" \
                 --output-filter="success=1 && repeat=0";
         } 2> "${zmap_time_output}"
+    fi
 
+    if [ $port == "53" ] || [ $port == "123" ]; then
+        # no need to run LZR or QUIC for those UDP ports...
         ./upload_zmap_data.sh "${port}" "${udp_dataset}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
-        # no need to run zgrab for UDP ports...
         continue
     fi
+
+    # run QUIC scans
+    if [ $port == "853" ] || [ $port == "443" ]; then
+        echo "Running QUIC scan for port ${port}..."
+        if [ $port == "853" ]; then
+            ALPN="doq"
+        else
+            ALPN="h3"
+        fi
+
+        # preparing QUIC input file
+        quic_input_file="input/quic/zmap_responsive_udp_${port}_${TIMESTAMP}_v4.csv"
+        echo "ip,hostname,port" > "${quic_input_file}"
+        jq -r '.saddr' "${zmap_output_file}" | awk -v port="$port" '{print $1 ",,"port}' >> "${quic_input_file}"
+
+        ./run_quic_scan.sh "${quic_input_file}" v4 ${ALPN}
+        ./upload_zmap_data.sh "${port}" "${udp_dataset}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
+        ./upload_quic_data.sh "${port}" "${udp_dataset}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}" "${ALPN}"
+
+        if [ $port == "853" ]; then
+            # no need to run LZR for this ports...
+            continue
+        fi
+        # for port 443, continue to LZR on TCP scans...
+    fi
+
+    # RUN LZR for TCP ports
+    echo "Running LZR for port ${port}..."
 
     sudo iptables -A OUTPUT -p tcp --tcp-flags RST RST -s ${SRC_IP} -j DROP
     log_file="results/lzr/lzr_${port}_${TIMESTAMP}.log"
@@ -85,9 +122,9 @@ for port in "${PORTS[@]}"; do
         --output-filter="success=1 && repeat=0" \
     | tee "${zmap_output_file}" \
     | docker compose run --rm -T --interactive \
-        lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -t 10 -f "${output_file}" &> "${log_file}"
+        lzr ./lzr --handshakes "${HS}" -sendInterface "${IFACE}" -t 10 -c 300 -f "${output_file}" &> "${log_file}"
 
-    # upload all data
+    # upload LZR data
     ./upload_zmap_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
     ./upload_lzr_data.sh "${port}" "${DATASET}" "${VP}" "${TIMESTAMP}" "${PROTOCOL_VERSION}"
     sudo iptables -D OUTPUT 1

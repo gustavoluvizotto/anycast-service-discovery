@@ -10,7 +10,7 @@ TIMESTAMP=$4
 PROTOCOL_VERSION=$5
 
 if [ -z "$PORT_NO" ] || [ -z "$DATASET" ] || [ -z "$VP" ] || [ -z "$TIMESTAMP" ] || [ -z "$PROTOCOL_VERSION" ]; then
-    echo "Usage: $0 <port_no> <dataset> <vantage_point> <timestamp> <protocol_version> <extension>"
+    echo "Usage: $0 <port_no> <dataset> <vantage_point> <timestamp> <protocol_version>"
     exit 1
 fi
 
@@ -27,7 +27,7 @@ mc mv --no-color --dp results/zmap/zmap_${PORT_NO}_${TIMESTAMP}.jsonl "${SCAN_OB
 # ARTEFACTS
 mc cp --no-color --dp input/zmap/anycast_prefixes_${YEAR}_${MONTH}_${DAY}_${PROTOCOL_VERSION}.csv "${ARTIFACT_OBJSTORE_PATH}/anycast_prefixes_${YEAR}_${MONTH}_${DAY}_${PROTOCOL_VERSION}.csv"
 
-mc mv --no-color --dp input/zmap/blocklist_${PORT_NO}.txt "${ARTIFACT_OBJSTORE_PATH}/blocklist_${PORT_NO}.txt"
+mc cp --no-color --dp input/zmap/blocklist_${PORT_NO}.txt "${ARTIFACT_OBJSTORE_PATH}/blocklist_${PORT_NO}.txt"
 
 if [ -f results/zmap/zmap_time_${PORT_NO}_${TIMESTAMP}.txt ]; then
     mc mv --no-color --dp results/zmap/zmap_time_${PORT_NO}_${TIMESTAMP}.txt "${ARTIFACT_OBJSTORE_PATH}/zmap_time_${PORT_NO}_${TIMESTAMP}.txt"

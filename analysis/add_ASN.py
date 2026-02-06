@@ -7,7 +7,6 @@ import pandas as pd
 from datetime import datetime
 from typing import Tuple, Optional
 from tqdm.auto import tqdm
-import socket
 
 class CaidaASLookup:
     def __init__(self, date_obj: datetime):
@@ -81,7 +80,7 @@ class CaidaASLookup:
                             print('.', end='', flush=True)
 
             print(" Done.")
-            print(f"Processed {count:,} prefixes.")
+            print(f"Processed {count} prefixes.")
             return rtree
 
         except Exception as e:
@@ -109,13 +108,7 @@ class CaidaASLookup:
             pass
         return '-', '-'
 
-    def add_prefix_and_asn(
-            self,
-            df: pd.DataFrame,
-            addr_col: str,
-            ip_version: str = 'v4',
-            asn_col: str = 'ASN'
-    ) -> pd.DataFrame:
+    def add_prefix_and_asn(self, df: pd.DataFrame, addr_col: str, ip_version: str = 'v4') -> pd.DataFrame:
         """
         Enriches the dataframe with 'bgp_prefix' and 'ASN'.
 
@@ -130,37 +123,7 @@ class CaidaASLookup:
         is_ipv4 = (ip_version == 'v4')
         rtree = self._get_tree(is_ipv4)
 
-        # # get unique IPs
-        # unique_ips = df[addr_col].unique()
-        #
-        # # sort (use cache locality)
-        # unique_ips.sort()
-
-
-        print(f"Mapping {len(df):,} IPs against {ip_version.upper()} tree...")
-        # print(f"Mapping {len(unique_ips):,} unique IPs (Total: {len(df):,})...")
-
-        # TODO fast lookup using packed bytes
-        # inet_ptr = socket.inet_aton if is_ipv4 else lambda x: socket.inet_pton(socket.AF_INET6, x)
-        #
-        # lookup_map = {}
-        # for ip in tqdm(unique_ips, desc="ASN Lookup"):
-        #     try:
-        #         # pass as packed bytes
-        #         packed_ip = inet_ptr(ip)
-        #         rnode = rtree.search_best(packed=packed_ip)
-        #         if rnode:
-        #             lookup_map[ip] = (rnode.data.get('prefix', '-'), rnode.data.get('AS', '-'))
-        #         else:
-        #             lookup_map[ip] = ('-', '-')
-        #     except Exception:
-        #         lookup_map[ip] = ('-', '-')
-        #
-        # # map back to original dataframe
-        # results_series = df[addr_col].map(lookup_map)
-        #
-        # # split tuple results into two columns
-        # df[['bgp_prefix', 'ASN']] = pd.DataFrame(results_series.tolist(), index=df.index)
+        print(f"Mapping {len(df)} IPs against {ip_version.upper()} tree...")
 
         # perform lookup
         results = [
@@ -168,6 +131,6 @@ class CaidaASLookup:
             for ip in tqdm(df[addr_col], total=df.shape[0], desc="ASN Lookup")
         ]
         # add results to dataframe
-        df['bgp_prefix'], df[asn_col] = zip(*results)
+        df['bgp_prefix'], df['ASN'] = zip(*results)
 
         return df

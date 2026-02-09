@@ -7,6 +7,7 @@
 /measurements/v6_*.csv
 /measurements/oi_v6_20251215.csv
 /measurements/anycast_census_*.csv
+/measurements/notebooks/ip2location/
 /measurements/input/zmap/anycast_prefixes_*.csv
 /measurements/input/zmap/*.csv
 /measurements/input/zmap/testipv6.txt

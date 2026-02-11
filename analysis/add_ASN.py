@@ -108,7 +108,13 @@ class CaidaASLookup:
             pass
         return '-', '-'
 
-    def add_prefix_and_asn(self, df: pd.DataFrame, addr_col: str, ip_version: str = 'v4') -> pd.DataFrame:
+    def add_prefix_and_asn(
+            self,
+            df: pd.DataFrame,
+            addr_col: str,
+            ip_version: str = 'v4',
+            asn_col: str = 'ASN',
+    ) -> pd.DataFrame:
         """
         Enriches the dataframe with 'bgp_prefix' and 'ASN'.
 
@@ -131,6 +137,6 @@ class CaidaASLookup:
             for ip in tqdm(df[addr_col], total=df.shape[0], desc="ASN Lookup")
         ]
         # add results to dataframe
-        df['bgp_prefix'], df['ASN'] = zip(*results)
+        df['bgp_prefix'], df[asn_col] = zip(*results)
 
         return df

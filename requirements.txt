@@ -9,3 +9,5 @@ ipaddress
 python-libnmap
 pytricia
 boto3
+country_converter
+pycountry

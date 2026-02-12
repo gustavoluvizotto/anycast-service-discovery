@@ -13,8 +13,7 @@ import census_helper
 from datetime import datetime
 
 ts = datetime(2026, 2, 3)
-
-census = census_helper.download_date(ts.year, ts.month, ts.day, ts.version)
+census = census_helper.download_date(ts, "v4")
 census.head()
 """
 def download_date(date_obj: datetime, version) -> pd.DataFrame:
@@ -60,7 +59,7 @@ def store_prefixes_only(ts, anycast_pdf, version, output_path):
 
 def main(args):
     datetime_obj = datetime.strptime(args.date, "%Y%m%d")
-    pdf = download_date(datetime_obj.year, datetime_obj.month, datetime_obj.day, args.ip_version)
+    pdf = download_date(datetime_obj, args.ip_version)
     output_path = args.output_dir if args.output_dir else "."
     if args.prefixes_only:
         store_prefixes_only(datetime_obj, pdf, args.ip_version, output_path)

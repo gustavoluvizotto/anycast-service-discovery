@@ -2,12 +2,13 @@
 
 IFACE=$1
 INTERVAL=30  # X seconds of interval
-OUTFILE="bandwidth_${IFACE}.csv"
+TIMESTAMP=$(TZ=":UTC" date +"%Y%m%d")
+OUTFILE="bandwidth_${IFACE}_${TIMESTAMP}.csv"
 
 echo "timestamp,rx_bytes,tx_bytes,rx_packets,tx_packets,rx_dropped,tx_dropped" > $OUTFILE
 
 while true; do
-    TS=$(date +%s)
+    TS=$(TZ=":UTC" date +%s)
     RX=$(cat /sys/class/net/$IFACE/statistics/rx_bytes)
     TX=$(cat /sys/class/net/$IFACE/statistics/tx_bytes)
     RX_PACKETS=$(cat /sys/class/net/$IFACE/statistics/rx_packets)

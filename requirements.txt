@@ -11,3 +11,5 @@ pytricia
 boto3
 country_converter
 pycountry
+matplotlib
+plotly

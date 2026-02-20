@@ -20,7 +20,7 @@ DAY=$(echo ${TIMESTAMP} | cut -c7-8)
 
 port="all_ports"
 
-zgrab_input_file="input/zgrab/..." # TODO
+zgrab_input_file="input/zgrab/tls_${TIMESTAMP}_${PROTOCOL_VERSION}_${VP}.csv"
 zgrab_output_dir="results/zgrab"
 zgrab_time_output="${zgrab_output_dir}/zgrab_time_${port}_${TIMESTAMP}.txt"
 zgrab_output_file="${zgrab_output_dir}/zgrab_${port}_${TIMESTAMP}_${PROTOCOL_VERSION}.jsonl"

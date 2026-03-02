@@ -13,8 +13,11 @@ fi
 
 TIMESTAMP=$(TZ=":UTC" date +"%Y%m%d")
 
-# using ZMap input file; did not work well
+# using ZMap input file (with port separated with ; delimiter); did not work well (no fingerprint)
 #docker compose run --rm -T --interactive lzr ./lzr --handshakes wait,http -sendSYNs -sourceIP 145.90.8.11 -sendInterface ens2f0np0 -gatewayMac 5c:6f:69:74:ca:60 -f results/lzr/test.json -rate 500 < input/lzr/zgrabhttp_20251216.csv
+#docker compose run --rm -T --interactive lzr ./lzr --handshakes wait,tls,http -sendSYNs -sourceIP 2001:610:190c:a144:5e6f:69ff:fe74:ca60 -sendInterface ens2f0np0 -gatewayMac 5c:6f:69:74:ca:60 -f results/lzr/testv6.jsonl -ipv6 -t 10 -c 10 -rate 100 < input/lzr/testipv6.txt
+
+#docker compose run --rm -T --interactive zmapv6 -p 80 --ipv6-target-file=/root/input/zmap/responsive_anycast_ipv6_addresses_20260221.csv --ipv6-source-ip=2001:610:190c:a144:5e6f:69ff:fe74:ca60 -f "saddr,daddr,sport,dport,seqnum,acknum,window,ttl" -O json --output-filter="success=1 && repeat=0" --gateway-mac=5c:6f:69:74:ca:60 -B 30M | tee results/zmap/testv6.jsonl | docker compose run --rm -T --interactive lzr ./lzr --handshakes wait,http -sendInterface ens2f0np0 -f results/lzr/testv6.jsonl -ipv6 -t 10 -c 10
 
 # reusing ZMap results
 PORTS=()

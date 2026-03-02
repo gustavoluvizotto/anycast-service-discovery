@@ -13,3 +13,5 @@ country_converter
 pycountry
 matplotlib
 plotly
+pycountry_convert
+airportsdata

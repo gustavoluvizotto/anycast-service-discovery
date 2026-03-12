@@ -37,8 +37,7 @@ def download_date(date_obj: datetime, version) -> pd.DataFrame:
 
     # URL e.g., https://github.com/ut-dacs/anycast-census/blob/main/2025/10/31/IPv4.parquet
     date_str = f"{date_obj.year:04d}/{date_obj.month:02d}/{date_obj.day:02d}"
-    url = f"https://github.com/ut-dacs/anycast-census/blob/main/{date_str}/IP{version}.parquet?raw=true"
-
+    url = f"https://raw.githubusercontent.com/ut-dacs/anycast-census/main/{date_str}/IP{version}.parquet"
     response = requests.get(url)
     if response.status_code != 200:
         raise Exception(f"Failed to download {url}: HTTP {response.status_code}")

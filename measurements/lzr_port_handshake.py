@@ -63,7 +63,7 @@ lzr_port_hs_map = {
     992: ["wait", "tls", "telnet"],
     25: ["wait", "smtp"],
     587: ["wait", "smtp"],
-    53: ["wait", "dns"],
+    #53: ["wait", "dns"], -> this is scanned with UDP...
 
     80: ["wait", "http"],
     #280: ["wait", "http"],
@@ -111,7 +111,7 @@ def get_missing_handshakes(handshake_list, is_ephemeral):
         "newlines",
     }
     hs_set = set(handshake_list)
-    
+
     if is_ephemeral:
         for hs in EPHEMERAL_HS:
             if hs not in hs_set and hs not in exclude_set:
@@ -151,10 +151,13 @@ def main(args):
             for line in f.readlines():
                 port = int(line.strip())
                 lzr_ports.add(port)
+        print("nmap ports:", len(lzr_ports))
         for port in lzr_port_hs_map.keys():
             lzr_ports.add(port)
+        print("lzr additional ports", len(lzr_ports))
         lzr_ports.add(853)  # DoQ
         lzr_ports.add(123)  # NTP
+        print("after adding doq and ntp:", len(lzr_ports))
         with open("measurements/input/lzr/lzr_ports.txt", "w") as f:
             for port in list(lzr_ports):
                 f.write(f"{port}\n")

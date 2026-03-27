@@ -1,0 +1,53 @@
+# curl no response == timeout
+# cannot verify quic
+# curls are done like unless explicitly said: curl ip:443/
+ip,port,fingerprint,maya,own_machine,sint_eustatius
+163.181.59.253,443,https,curl works,no response,no response
+185.195.92.151,443,http,curl response 400,curl response 400,no response
+185.195.92.241,443,http,curl response 400,curl response 400,no response
+185.195.94.120,443,http,curl response 400,curl response 400,no response
+193.183.162.61,443,http,curl response 400,curl response 400,no response
+193.183.163.100,443,http,curl response 400,curl response 400,no response
+5.39.245.41,443,https,"curl works (curl -L -k https://5.39.245.41:443/)","curl works (curl -L -k https://5.39.245.41:443/)",no response
+71.18.203.100,443,https,curl works,no response,no response
+142.248.23.102,443,tls,openssl connect works,no response,no response
+185.195.92.147,443,tls,openssl connect works,openssl connect works,no response
+185.195.94.164,443,tls,openssl connect works,openssl connect works,no response
+192.165.138.11,443,tls,openssl connect works,openssl connect works,no response
+193.183.162.229,443,tls,openssl connect works,openssl connect works,no response
+193.183.163.102,443,tls,openssl connect works,openssl connect works,no response
+5.39.245.21,443,tls,openssl connect works,openssl connect works,no response
+89.106.200.110,443,tls,openssl connect works,openssl connect works,no response
+103.17.152.152,22,ssh,SHA256:fl63/AfYcLwBGqE04Z/c9lrdqrYeOtndNfl6NwQlGDg,TCP timeout,TCP timeout
+106.2.158.158,22,ssh,SHA256:b/ay2+u+/gYRJZ0wvRA7dwplJnTKq7dgyyQkYV9oW5Q,TCP timeout,TCP timeout
+106.2.159.159,22,ssh,SHA256:b/ay2+u+/gYRJZ0wvRA7dwplJnTKq7dgyyQkYV9oW5Q,TCP timeout,TCP timeout
+185.195.94.138,22,ssh,SHA256:nrU4tnMMDRAnciJGXZ6r6OEn5uzT/5N+7CZKrFnv2j0,SHA256:nrU4tnMMDRAnciJGXZ6r6OEn5uzT/5N+7CZKrFnv2j0,TCP timeout
+204.10.192.1,22,ssh,SHA256:zRjWWOwwMIy5LGP+HIoogth5JeXOAf76j5s3zad2+so,Network is unreachable,No route to host
+44.31.223.163,22,ssh,SHA256:3yLF/x1P2y3rKjR4bg3FNYlb+ZZYVSAgJoMXU+kFToI,TCP timeout,TCP timeout
+45.87.220.1,22,ssh,SHA256:Od8pZ5nIz+pavtCPfBf3+8dDtSP8XYs00b3uqxwKU8c,No route to host,No route to host
+71.18.203.99,22,ssh,SHA256:MvbWchaUyjAhw6UD3JeezA3XnaNV1+n2NtwGJKGkyc8,TCP timeout,TCP timeout
+89.37.41.104,22,ssh,SHA256:iA0HL3UQ3IQOXoEj+N7tPxVvEo0MTNYHentzUGU89b0,TCP timeout,TCP timeout
+106.2.158.158,53,dns,9.9.5-9+deb8u6-Debian,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+106.2.159.159,53,dns,9.9.5-9+deb8u6-Debian,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+111.220.2.2,53,dns,Authoritative DNS,[TIMEOUT] Server did not respond,Authoritative DNS
+121.98.0.2,53,dns,[ERROR] RCODE=REFUSED,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+131.203.1.5,53,dns,[ERROR] RCODE=REFUSED,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+131.203.248.1,53,dns,[ERROR] RCODE=REFUSED,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+149.112.127.1,53,dns,CIRA Server,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+156.154.126.65,53,dns,UltraDNS TLD b 36c96bee471750b58dd65f6723e3271283a67bd4,UltraDNS TLD b 36c96bee471750b58dd65f6723e3271283a67bd4,UltraDNS TLD b 36c96bee471750b58dd65f6723e3271283a67bd4
+176.52.216.22,53,dns,Viatel DNS recursor - dub-pkw-dns1,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+185.195.92.1,53,dns,[ERROR] RCODE=NOTIMP,[ERROR] RCODE=NOTIMP,[TIMEOUT] Server did not respond
+185.195.94.137,53,dns,[ERROR] RCODE=NOTIMP,[ERROR] RCODE=NOTIMP,[TIMEOUT] Server did not respond
+185.8.238.13,53,dns,[ERROR] RCODE=REFUSED,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+193.119.10.10,53,dns,[ERROR] RCODE=FORMERR,[ERROR] RCODE=FORMERR,[ERROR] RCODE=FORMERR
+194.0.1.15,53,dns,this page intentionally left blank,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+194.0.2.4,53,dns,this page intentionally left blank,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+195.85.85.22,53,dns,[ERROR] RCODE=REFUSED,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+199.184.165.2,53,dns,RCNv,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+202.12.31.53,53,dns,ns4-nx.apnic.net,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+203.119.42.53,53,dns,ns1-nx.apnic.net,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+203.119.86.101,53,dns,ns3-nx.apnic.net,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+203.119.95.53,53,dns,ns2-nx.apnic.net,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+84.203.254.34,53,dns,Viatel DNS recursor - dub-pkw-dns1,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+84.203.255.34,53,dns,Viatel DNS recursor - dub-pkw-dns1,[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond
+89.106.200.53,53,dns,"redirect.pizza Authoritative DNS syd0.prod.edge.redirect.pizza (powered by PowerDNS)",[TIMEOUT] Server did not respond,[TIMEOUT] Server did not respond

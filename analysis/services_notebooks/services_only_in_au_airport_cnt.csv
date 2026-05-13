@@ -1,0 +1,289 @@
+prefix,fingerprint,ASN,nr_pops,locations,airport
+163.181.59.0/24,quic-h3,24429,21,"Row(city=None, code_country=None, id='NoCity', latitude=None, longitude=None)",NoCity
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Tokyo', code_country=None, id='HND', latitude=None, longitude=None)",HND
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Stockholm', code_country=None, id='BMA', latitude=None, longitude=None)",BMA
+163.181.59.0/24,quic-h3,24429,21,"Row(city='São Paulo', code_country=None, id='SAO', latitude=None, longitude=None)",SAO
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Madrid', code_country=None, id='MAD', latitude=None, longitude=None)",MAD
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Santiago', code_country=None, id='SCL', latitude=None, longitude=None)",SCL
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Paris', code_country=None, id='CDG', latitude=None, longitude=None)",CDG
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Rio De Janeiro', code_country=None, id='GIG', latitude=None, longitude=None)",GIG
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Johannesburg', code_country=None, id='QRA', latitude=None, longitude=None)",QRA
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Dubai', code_country=None, id='NHD', latitude=None, longitude=None)",NHD
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Jakarta', code_country=None, id='CGK', latitude=None, longitude=None)",CGK
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Buenos Aires', code_country=None, id='EZE', latitude=None, longitude=None)",EZE
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Chicago', code_country=None, id='ORD', latitude=None, longitude=None)",ORD
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Milan', code_country=None, id='MXP', latitude=None, longitude=None)",MXP
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Taipei', code_country=None, id='TAI', latitude=None, longitude=None)",TAI
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Bogota', code_country=None, id='BOG', latitude=None, longitude=None)",BOG
+163.181.59.0/24,quic-h3,24429,21,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+163.181.59.0/24,quic-h3,24429,21,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+185.195.92.0/24,http,42649,6,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+185.195.92.0/24,http,42649,6,"Row(city='Stockholm', code_country=None, id='BMA', latitude=None, longitude=None)",BMA
+185.195.92.0/24,http,42649,6,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+185.195.92.0/24,http,42649,6,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+185.195.92.0/24,http,42649,6,"Row(city='Amsterdam', code_country=None, id='AMX', latitude=None, longitude=None)",AMX
+185.195.92.0/24,http,42649,6,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+185.195.94.0/24,http,42649,6,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+185.195.94.0/24,http,42649,6,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+185.195.94.0/24,http,42649,6,"Row(city='Stockholm', code_country=None, id='BMA', latitude=None, longitude=None)",BMA
+185.195.94.0/24,http,42649,6,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+185.195.94.0/24,http,42649,6,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+185.195.94.0/24,http,42649,6,"Row(city='Amsterdam', code_country=None, id='AMX', latitude=None, longitude=None)",AMX
+193.183.162.0/24,https,42649,6,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+193.183.162.0/24,https,42649,6,"Row(city='Stockholm', code_country=None, id='BMA', latitude=None, longitude=None)",BMA
+193.183.162.0/24,https,42649,6,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+193.183.162.0/24,https,42649,6,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+193.183.162.0/24,https,42649,6,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+193.183.162.0/24,https,42649,6,"Row(city='Amsterdam', code_country=None, id='AMX', latitude=None, longitude=None)",AMX
+111.220.2.0/24,dns,9443,3,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+111.220.2.0/24,dns,9443,3,"Row(city='Melbourne', code_country=None, id='MEL', latitude=None, longitude=None)",MEL
+111.220.2.0/24,dns,9443,3,"Row(city='Perth', code_country=None, id='PER', latitude=None, longitude=None)",PER
+173.45.137.0/24,ntp,19133,2,"Row(city='Baltimore', code_country=None, id='BWI', latitude=None, longitude=None)",BWI
+173.45.137.0/24,ntp,19133,2,"Row(city='Dallas', code_country=None, id='DAL', latitude=None, longitude=None)",DAL
+44.31.223.0/24,ssh,198734,2,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+44.31.223.0/24,ssh,198734,2,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+192.165.138.0/24,tls,42649,6,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+192.165.138.0/24,tls,42649,6,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+192.165.138.0/24,tls,42649,6,"Row(city='Stockholm', code_country=None, id='BMA', latitude=None, longitude=None)",BMA
+192.165.138.0/24,tls,42649,6,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+192.165.138.0/24,tls,42649,6,"Row(city='Amsterdam', code_country=None, id='AMX', latitude=None, longitude=None)",AMX
+192.165.138.0/24,tls,42649,6,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+131.203.248.0/24,dns,9790,2,"Row(city='Auckland', code_country=None, id='AKL', latitude=None, longitude=None)",AKL
+131.203.248.0/24,dns,9790,2,"Row(city='Wellington', code_country=None, id='WEL', latitude=None, longitude=None)",WEL
+142.248.23.0/24,quic-h3,50224,2,"Row(city='Dallas', code_country=None, id='DAL', latitude=None, longitude=None)",DAL
+142.248.23.0/24,quic-h3,50224,2,"Row(city='San Jose', code_country=None, id='SJC', latitude=None, longitude=None)",SJC
+89.37.41.0/24,ssh,216393,2,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+89.37.41.0/24,ssh,216393,2,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+202.12.31.0/24,dns,18366,8,"Row(city='Seoul', code_country=None, id='GMP', latitude=None, longitude=None)",GMP
+202.12.31.0/24,dns,18366,8,"Row(city='Paris', code_country=None, id='CDG', latitude=None, longitude=None)",CDG
+202.12.31.0/24,dns,18366,8,"Row(city='Delhi', code_country=None, id='DELHI', latitude=None, longitude=None)",DELHI
+202.12.31.0/24,dns,18366,8,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+202.12.31.0/24,dns,18366,8,"Row(city='Chicago', code_country=None, id='ORD', latitude=None, longitude=None)",ORD
+202.12.31.0/24,dns,18366,8,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+202.12.31.0/24,dns,18366,8,"Row(city='Tokyo', code_country=None, id='NRT', latitude=None, longitude=None)",NRT
+202.12.31.0/24,dns,18366,8,"Row(city='Bourges', code_country=None, id='BOU', latitude=None, longitude=None)",BOU
+89.106.200.0/24,tls,209626,21,"Row(city='Burbank', code_country=None, id='BUR', latitude=None, longitude=None)",BUR
+89.106.200.0/24,tls,209626,21,"Row(city='Seoul', code_country=None, id='GMP', latitude=None, longitude=None)",GMP
+89.106.200.0/24,tls,209626,21,"Row(city='Newark', code_country=None, id='CNJ', latitude=None, longitude=None)",CNJ
+89.106.200.0/24,tls,209626,21,"Row(city='Stockholm', code_country=None, id='BMA', latitude=None, longitude=None)",BMA
+89.106.200.0/24,tls,209626,21,"Row(city='Madrid', code_country=None, id='MAD', latitude=None, longitude=None)",MAD
+89.106.200.0/24,tls,209626,21,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+89.106.200.0/24,tls,209626,21,"Row(city='Seattle', code_country=None, id='BFI', latitude=None, longitude=None)",BFI
+89.106.200.0/24,tls,209626,21,"Row(city='Dallas', code_country=None, id='DAL', latitude=None, longitude=None)",DAL
+89.106.200.0/24,tls,209626,21,"Row(city=None, code_country=None, id='NoCity', latitude=None, longitude=None)",NoCity
+89.106.200.0/24,tls,209626,21,"Row(city='Tokyo', code_country=None, id='HND', latitude=None, longitude=None)",HND
+89.106.200.0/24,tls,209626,21,"Row(city='Mumbai', code_country=None, id='BOM', latitude=None, longitude=None)",BOM
+89.106.200.0/24,tls,209626,21,"Row(city='Honolulu', code_country=None, id='HNL', latitude=None, longitude=None)",HNL
+89.106.200.0/24,tls,209626,21,"Row(city='Chicago', code_country=None, id='ORD', latitude=None, longitude=None)",ORD
+89.106.200.0/24,tls,209626,21,"Row(city='Toronto', code_country=None, id='YZD', latitude=None, longitude=None)",YZD
+89.106.200.0/24,tls,209626,21,"Row(city='São Paulo', code_country=None, id='SAO', latitude=None, longitude=None)",SAO
+89.106.200.0/24,tls,209626,21,"Row(city='Querétaro', code_country=None, id='QRO', latitude=None, longitude=None)",QRO
+89.106.200.0/24,tls,209626,21,"Row(city='Johannesburg', code_country=None, id='QRA', latitude=None, longitude=None)",QRA
+89.106.200.0/24,tls,209626,21,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+89.106.200.0/24,tls,209626,21,"Row(city='San Jose', code_country=None, id='SJC', latitude=None, longitude=None)",SJC
+89.106.200.0/24,tls,209626,21,"Row(city='London', code_country=None, id='LHR', latitude=None, longitude=None)",LHR
+89.106.200.0/24,tls,209626,21,"Row(city='Barcelona', code_country=None, id='BCN', latitude=None, longitude=None)",BCN
+185.8.237.0/24,quic-h3,208414,7,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+185.8.237.0/24,quic-h3,208414,7,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+185.8.237.0/24,quic-h3,208414,7,"Row(city='Baltimore', code_country=None, id='BWI', latitude=None, longitude=None)",BWI
+185.8.237.0/24,quic-h3,208414,7,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+185.8.237.0/24,quic-h3,208414,7,"Row(city='Vilnius', code_country=None, id='VNO', latitude=None, longitude=None)",VNO
+185.8.237.0/24,quic-h3,208414,7,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+185.8.237.0/24,quic-h3,208414,7,"Row(city='Buenos Aires', code_country=None, id='EZE', latitude=None, longitude=None)",EZE
+121.98.0.0/24,dns,9790,2,"Row(city='Wellington', code_country=None, id='WEL', latitude=None, longitude=None)",WEL
+121.98.0.0/24,dns,9790,2,"Row(city='Auckland', code_country=None, id='AKL', latitude=None, longitude=None)",AKL
+23.162.177.0/24,ntp,398549,2,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+23.162.177.0/24,ntp,398549,2,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+202.224.32.0/24,ntp,4685,2,"Row(city='Tokyo', code_country=None, id='HND', latitude=None, longitude=None)",HND
+202.224.32.0/24,ntp,4685,2,"Row(city='Osaka', code_country=None, id='ITM', latitude=None, longitude=None)",ITM
+194.0.1.0/24,dns,42909,20,"Row(city='Bangkok', code_country=None, id='DMK', latitude=None, longitude=None)",DMK
+194.0.1.0/24,dns,42909,20,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+194.0.1.0/24,dns,42909,20,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+194.0.1.0/24,dns,42909,20,"Row(city='Dublin', code_country=None, id='DUB', latitude=None, longitude=None)",DUB
+194.0.1.0/24,dns,42909,20,"Row(city='Miami', code_country=None, id='TMB', latitude=None, longitude=None)",TMB
+194.0.1.0/24,dns,42909,20,"Row(city='Riga', code_country=None, id='RIX', latitude=None, longitude=None)",RIX
+194.0.1.0/24,dns,42909,20,"Row(city='Perth', code_country=None, id='PER', latitude=None, longitude=None)",PER
+194.0.1.0/24,dns,42909,20,"Row(city='Johannesburg', code_country=None, id='QRA', latitude=None, longitude=None)",QRA
+194.0.1.0/24,dns,42909,20,"Row(city='Sofia', code_country=None, id='SOF', latitude=None, longitude=None)",SOF
+194.0.1.0/24,dns,42909,20,"Row(city='Baltimore', code_country=None, id='BWI', latitude=None, longitude=None)",BWI
+194.0.1.0/24,dns,42909,20,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+194.0.1.0/24,dns,42909,20,"Row(city='Liège', code_country=None, id='LGG', latitude=None, longitude=None)",LGG
+194.0.1.0/24,dns,42909,20,"Row(city='Vienna', code_country=None, id='WIE', latitude=None, longitude=None)",WIE
+194.0.1.0/24,dns,42909,20,"Row(city='Kiev', code_country=None, id='KBP', latitude=None, longitude=None)",KBP
+194.0.1.0/24,dns,42909,20,"Row(city='Auckland', code_country=None, id='AKL', latitude=None, longitude=None)",AKL
+194.0.1.0/24,dns,42909,20,"Row(city='Hong Kong', code_country=None, id='HKX', latitude=None, longitude=None)",HKX
+194.0.1.0/24,dns,42909,20,"Row(city='Tokyo', code_country=None, id='NRT', latitude=None, longitude=None)",NRT
+194.0.1.0/24,dns,42909,20,"Row(city='São Paulo', code_country=None, id='SAO', latitude=None, longitude=None)",SAO
+194.0.1.0/24,dns,42909,20,"Row(city='St Petersburg', code_country=None, id='LED', latitude=None, longitude=None)",LED
+194.0.1.0/24,dns,42909,20,"Row(city='Tehran', code_country=None, id='IKA', latitude=None, longitude=None)",IKA
+194.0.2.0/24,dns,42909,19,"Row(city='Bangkok', code_country=None, id='DMK', latitude=None, longitude=None)",DMK
+194.0.2.0/24,dns,42909,19,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+194.0.2.0/24,dns,42909,19,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+194.0.2.0/24,dns,42909,19,"Row(city='Dublin', code_country=None, id='DUB', latitude=None, longitude=None)",DUB
+194.0.2.0/24,dns,42909,19,"Row(city='Riga', code_country=None, id='RIX', latitude=None, longitude=None)",RIX
+194.0.2.0/24,dns,42909,19,"Row(city='Johannesburg', code_country=None, id='QRA', latitude=None, longitude=None)",QRA
+194.0.2.0/24,dns,42909,19,"Row(city='Perth', code_country=None, id='PER', latitude=None, longitude=None)",PER
+194.0.2.0/24,dns,42909,19,"Row(city='Sofia', code_country=None, id='SOF', latitude=None, longitude=None)",SOF
+194.0.2.0/24,dns,42909,19,"Row(city='Kiev', code_country=None, id='KBP', latitude=None, longitude=None)",KBP
+194.0.2.0/24,dns,42909,19,"Row(city='Vienna', code_country=None, id='WIE', latitude=None, longitude=None)",WIE
+194.0.2.0/24,dns,42909,19,"Row(city='Liège', code_country=None, id='LGG', latitude=None, longitude=None)",LGG
+194.0.2.0/24,dns,42909,19,"Row(city='Baltimore', code_country=None, id='BWI', latitude=None, longitude=None)",BWI
+194.0.2.0/24,dns,42909,19,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+194.0.2.0/24,dns,42909,19,"Row(city='Hong Kong', code_country=None, id='HKX', latitude=None, longitude=None)",HKX
+194.0.2.0/24,dns,42909,19,"Row(city='Auckland', code_country=None, id='AKL', latitude=None, longitude=None)",AKL
+194.0.2.0/24,dns,42909,19,"Row(city='Tokyo', code_country=None, id='NRT', latitude=None, longitude=None)",NRT
+194.0.2.0/24,dns,42909,19,"Row(city='Helsinki', code_country=None, id='HEL', latitude=None, longitude=None)",HEL
+194.0.2.0/24,dns,42909,19,"Row(city='Tehran', code_country=None, id='IKA', latitude=None, longitude=None)",IKA
+194.0.2.0/24,dns,42909,19,"Row(city='Buenos Aires', code_country=None, id='EZE', latitude=None, longitude=None)",EZE
+106.2.158.0/24,ssh,63199,3,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+106.2.158.0/24,ssh,63199,3,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+106.2.158.0/24,ssh,63199,3,"Row(city='Tokyo', code_country=None, id='NRT', latitude=None, longitude=None)",NRT
+204.10.192.0/24,ssh,210667,6,"Row(city='Stockholm', code_country=None, id='BMA', latitude=None, longitude=None)",BMA
+204.10.192.0/24,ssh,210667,6,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+204.10.192.0/24,ssh,210667,6,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+204.10.192.0/24,ssh,210667,6,"Row(city='London', code_country=None, id='LHR', latitude=None, longitude=None)",LHR
+204.10.192.0/24,ssh,210667,6,"Row(city='Auckland', code_country=None, id='AKL', latitude=None, longitude=None)",AKL
+204.10.192.0/24,ssh,210667,6,"Row(city='Kansas City', code_country=None, id='MKC', latitude=None, longitude=None)",MKC
+5.39.245.0/24,http,48173,6,"Row(city='Stockholm', code_country=None, id='BMA', latitude=None, longitude=None)",BMA
+5.39.245.0/24,http,48173,6,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+5.39.245.0/24,http,48173,6,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+5.39.245.0/24,http,48173,6,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+5.39.245.0/24,http,48173,6,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+5.39.245.0/24,http,48173,6,"Row(city='Amsterdam', code_country=None, id='AMX', latitude=None, longitude=None)",AMX
+149.112.127.0/24,dns,394354,7,"Row(city='Mumbai', code_country=None, id='BOM', latitude=None, longitude=None)",BOM
+149.112.127.0/24,dns,394354,7,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+149.112.127.0/24,dns,394354,7,"Row(city='São Paulo', code_country=None, id='SAO', latitude=None, longitude=None)",SAO
+149.112.127.0/24,dns,394354,7,"Row(city='Santiago', code_country=None, id='SCL', latitude=None, longitude=None)",SCL
+149.112.127.0/24,dns,394354,7,"Row(city='Cape Town', code_country=None, id='CPT', latitude=None, longitude=None)",CPT
+149.112.127.0/24,dns,394354,7,"Row(city='Lagos', code_country=None, id='LOS', latitude=None, longitude=None)",LOS
+149.112.127.0/24,dns,394354,7,"Row(city='Berlin', code_country=None, id='TXL', latitude=None, longitude=None)",TXL
+203.119.86.0/24,dns,18368,3,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+203.119.86.0/24,dns,18368,3,"Row(city='Tokyo', code_country=None, id='NRT', latitude=None, longitude=None)",NRT
+203.119.86.0/24,dns,18368,3,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+185.8.238.0/24,dns,208414,17,"Row(city=None, code_country=None, id='NoCity', latitude=None, longitude=None)",NoCity
+185.8.238.0/24,dns,208414,17,"Row(city='Melbourne', code_country=None, id='MEL', latitude=None, longitude=None)",MEL
+185.8.238.0/24,dns,208414,17,"Row(city='Belgrade', code_country=None, id='BEG', latitude=None, longitude=None)",BEG
+185.8.238.0/24,dns,208414,17,"Row(city='Liverpool', code_country=None, id='LPL', latitude=None, longitude=None)",LPL
+185.8.238.0/24,dns,208414,17,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+185.8.238.0/24,dns,208414,17,"Row(city='Ashburn', code_country=None, id='ASH', latitude=None, longitude=None)",ASH
+185.8.238.0/24,dns,208414,17,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+185.8.238.0/24,dns,208414,17,"Row(city='Seattle', code_country=None, id='BFI', latitude=None, longitude=None)",BFI
+185.8.238.0/24,dns,208414,17,"Row(city='Jakarta', code_country=None, id='CGK', latitude=None, longitude=None)",CGK
+185.8.238.0/24,dns,208414,17,"Row(city='São Paulo', code_country=None, id='SAO', latitude=None, longitude=None)",SAO
+185.8.238.0/24,dns,208414,17,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+185.8.238.0/24,dns,208414,17,"Row(city='Querétaro', code_country=None, id='QRO', latitude=None, longitude=None)",QRO
+185.8.238.0/24,dns,208414,17,"Row(city='Buenos Aires', code_country=None, id='EZE', latitude=None, longitude=None)",EZE
+185.8.238.0/24,dns,208414,17,"Row(city='Nicosia', code_country=None, id='ECN', latitude=None, longitude=None)",ECN
+185.8.238.0/24,dns,208414,17,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+185.8.238.0/24,dns,208414,17,"Row(city='Madrid', code_country=None, id='MAD', latitude=None, longitude=None)",MAD
+185.8.238.0/24,dns,208414,17,"Row(city='St Petersburg', code_country=None, id='LED', latitude=None, longitude=None)",LED
+61.9.128.0/24,ntp,1221,4,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+61.9.128.0/24,ntp,1221,4,"Row(city='Perth', code_country=None, id='PER', latitude=None, longitude=None)",PER
+61.9.128.0/24,ntp,1221,4,"Row(city='Melbourne', code_country=None, id='MEL', latitude=None, longitude=None)",MEL
+61.9.128.0/24,ntp,1221,4,"Row(city='Adelaide', code_country=None, id='ADL', latitude=None, longitude=None)",ADL
+71.18.203.0/24,https,396986,7,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+71.18.203.0/24,https,396986,7,"Row(city='São Paulo', code_country=None, id='SAO', latitude=None, longitude=None)",SAO
+71.18.203.0/24,https,396986,7,"Row(city='Tokyo', code_country=None, id='NRT', latitude=None, longitude=None)",NRT
+71.18.203.0/24,https,396986,7,"Row(city='Osaka', code_country=None, id='ITM', latitude=None, longitude=None)",ITM
+71.18.203.0/24,https,396986,7,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+71.18.203.0/24,https,396986,7,"Row(city='Bangkok', code_country=None, id='DMK', latitude=None, longitude=None)",DMK
+71.18.203.0/24,https,396986,7,"Row(city='Istanbul', code_country=None, id='SAW', latitude=None, longitude=None)",SAW
+45.87.220.0/24,ssh,60387,5,"Row(city='Madrid', code_country=None, id='MAD', latitude=None, longitude=None)",MAD
+45.87.220.0/24,ssh,60387,5,"Row(city='Zurich', code_country=None, id='ZRH', latitude=None, longitude=None)",ZRH
+45.87.220.0/24,ssh,60387,5,"Row(city='Barcelona', code_country=None, id='BCN', latitude=None, longitude=None)",BCN
+45.87.220.0/24,ssh,60387,5,"Row(city='Oslo', code_country=None, id='NIX', latitude=None, longitude=None)",NIX
+45.87.220.0/24,ssh,60387,5,"Row(city='Auckland', code_country=None, id='AKL', latitude=None, longitude=None)",AKL
+195.85.85.0/24,dns,208414,13,"Row(city='Paris', code_country=None, id='CDG', latitude=None, longitude=None)",CDG
+195.85.85.0/24,dns,208414,13,"Row(city='Melbourne', code_country=None, id='MEL', latitude=None, longitude=None)",MEL
+195.85.85.0/24,dns,208414,13,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+195.85.85.0/24,dns,208414,13,"Row(city='Baltimore', code_country=None, id='BWI', latitude=None, longitude=None)",BWI
+195.85.85.0/24,dns,208414,13,"Row(city='Seattle', code_country=None, id='BFI', latitude=None, longitude=None)",BFI
+195.85.85.0/24,dns,208414,13,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+195.85.85.0/24,dns,208414,13,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+195.85.85.0/24,dns,208414,13,"Row(city='São Paulo', code_country=None, id='SAO', latitude=None, longitude=None)",SAO
+195.85.85.0/24,dns,208414,13,"Row(city='Jakarta', code_country=None, id='CGK', latitude=None, longitude=None)",CGK
+195.85.85.0/24,dns,208414,13,"Row(city='Buenos Aires', code_country=None, id='EZE', latitude=None, longitude=None)",EZE
+195.85.85.0/24,dns,208414,13,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+195.85.85.0/24,dns,208414,13,"Row(city='Latakia', code_country=None, id='LTK', latitude=None, longitude=None)",LTK
+195.85.85.0/24,dns,208414,13,"Row(city='Madrid', code_country=None, id='MAD', latitude=None, longitude=None)",MAD
+106.2.159.0/24,ssh,63199,3,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+106.2.159.0/24,ssh,63199,3,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+106.2.159.0/24,ssh,63199,3,"Row(city='Tokyo', code_country=None, id='NRT', latitude=None, longitude=None)",NRT
+193.119.10.0/24,dns,151397,6,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+193.119.10.0/24,dns,151397,6,"Row(city='Amsterdam', code_country=None, id='AMX', latitude=None, longitude=None)",AMX
+193.119.10.0/24,dns,151397,6,"Row(city='Hong Kong', code_country=None, id='HKX', latitude=None, longitude=None)",HKX
+193.119.10.0/24,dns,151397,6,"Row(city='Tokyo', code_country=None, id='NRT', latitude=None, longitude=None)",NRT
+193.119.10.0/24,dns,151397,6,"Row(city='Philadelphia', code_country=None, id='PHL', latitude=None, longitude=None)",PHL
+193.119.10.0/24,dns,151397,6,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+84.203.255.0/24,dns,31122,2,"Row(city='Dublin', code_country=None, id='DUB', latitude=None, longitude=None)",DUB
+84.203.255.0/24,dns,31122,2,"Row(city='London', code_country=None, id='LHR', latitude=None, longitude=None)",LHR
+199.184.165.0/24,dns,6079,3,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+199.184.165.0/24,dns,6079,3,"Row(city='Baltimore', code_country=None, id='BWI', latitude=None, longitude=None)",BWI
+199.184.165.0/24,dns,6079,3,"Row(city='Chicago', code_country=None, id='ORD', latitude=None, longitude=None)",ORD
+216.57.130.0/24,ntp,46887,3,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+216.57.130.0/24,ntp,46887,3,"Row(city='Houston', code_country=None, id='IAH', latitude=None, longitude=None)",IAH
+216.57.130.0/24,ntp,46887,3,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+176.52.216.0/24,dns,31122,2,"Row(city='Dublin', code_country=None, id='DUB', latitude=None, longitude=None)",DUB
+176.52.216.0/24,dns,31122,2,"Row(city='London', code_country=None, id='LHR', latitude=None, longitude=None)",LHR
+131.203.1.0/24,dns,9790,2,"Row(city='Wellington', code_country=None, id='WEL', latitude=None, longitude=None)",WEL
+131.203.1.0/24,dns,9790,2,"Row(city='Auckland', code_country=None, id='AKL', latitude=None, longitude=None)",AKL
+193.183.163.0/24,http,42649,6,"Row(city='Frankfurt-am-Main', code_country=None, id='FRA', latitude=None, longitude=None)",FRA
+193.183.163.0/24,http,42649,6,"Row(city='Stockholm', code_country=None, id='BMA', latitude=None, longitude=None)",BMA
+193.183.163.0/24,http,42649,6,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+193.183.163.0/24,http,42649,6,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+193.183.163.0/24,http,42649,6,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+193.183.163.0/24,http,42649,6,"Row(city='Amsterdam', code_country=None, id='AMX', latitude=None, longitude=None)",AMX
+203.119.42.0/24,dns,18367,8,"Row(city='Seoul', code_country=None, id='GMP', latitude=None, longitude=None)",GMP
+203.119.42.0/24,dns,18367,8,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+203.119.42.0/24,dns,18367,8,"Row(city='Honolulu', code_country=None, id='HNL', latitude=None, longitude=None)",HNL
+203.119.42.0/24,dns,18367,8,"Row(city='Delhi', code_country=None, id='DELHI', latitude=None, longitude=None)",DELHI
+203.119.42.0/24,dns,18367,8,"Row(city='Bangalore', code_country=None, id='BLR', latitude=None, longitude=None)",BLR
+203.119.42.0/24,dns,18367,8,"Row(city='Johannesburg', code_country=None, id='QRA', latitude=None, longitude=None)",QRA
+203.119.42.0/24,dns,18367,8,"Row(city='Osaka', code_country=None, id='ITM', latitude=None, longitude=None)",ITM
+203.119.42.0/24,dns,18367,8,"Row(city='Tokyo', code_country=None, id='NRT', latitude=None, longitude=None)",NRT
+46.255.127.0/24,ntp,48285,3,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+46.255.127.0/24,ntp,48285,3,"Row(city='Amsterdam', code_country=None, id='AMX', latitude=None, longitude=None)",AMX
+46.255.127.0/24,ntp,48285,3,"Row(city='Philadelphia', code_country=None, id='PHL', latitude=None, longitude=None)",PHL
+203.119.95.0/24,dns,18369,5,"Row(city='Seoul', code_country=None, id='GMP', latitude=None, longitude=None)",GMP
+203.119.95.0/24,dns,18369,5,"Row(city='Tokyo', code_country=None, id='HND', latitude=None, longitude=None)",HND
+203.119.95.0/24,dns,18369,5,"Row(city='Mumbai', code_country=None, id='BOM', latitude=None, longitude=None)",BOM
+203.119.95.0/24,dns,18369,5,"Row(city=None, code_country=None, id='NoCity', latitude=None, longitude=None)",NoCity
+203.119.95.0/24,dns,18369,5,"Row(city='Melbourne', code_country=None, id='MEL', latitude=None, longitude=None)",MEL
+103.17.152.0/24,ssh,401332,5,"Row(city='Johannesburg', code_country=None, id='QRA', latitude=None, longitude=None)",QRA
+103.17.152.0/24,ssh,401332,5,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+103.17.152.0/24,ssh,401332,5,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+103.17.152.0/24,ssh,401332,5,"Row(city='Santiago', code_country=None, id='SCL', latitude=None, longitude=None)",SCL
+103.17.152.0/24,ssh,401332,5,"Row(city='Toronto', code_country=None, id='YZD', latitude=None, longitude=None)",YZD
+156.154.126.0/24,dns,12008,23,"Row(city='Hong Kong', code_country=None, id='HKX', latitude=None, longitude=None)",HKX
+156.154.126.0/24,dns,12008,23,"Row(city='Miami', code_country=None, id='TMB', latitude=None, longitude=None)",TMB
+156.154.126.0/24,dns,12008,23,"Row(city='Tokyo', code_country=None, id='HND', latitude=None, longitude=None)",HND
+156.154.126.0/24,dns,12008,23,"Row(city='Johannesburg', code_country=None, id='QRA', latitude=None, longitude=None)",QRA
+156.154.126.0/24,dns,12008,23,"Row(city='Los Angeles', code_country=None, id='LAX', latitude=None, longitude=None)",LAX
+156.154.126.0/24,dns,12008,23,"Row(city='San Jose', code_country=None, id='SJC', latitude=None, longitude=None)",SJC
+156.154.126.0/24,dns,12008,23,"Row(city='Sydney', code_country=None, id='SYD', latitude=None, longitude=None)",SYD
+156.154.126.0/24,dns,12008,23,"Row(city='Singapore', code_country=None, id='SIN', latitude=None, longitude=None)",SIN
+156.154.126.0/24,dns,12008,23,"Row(city='Stockholm', code_country=None, id='BMA', latitude=None, longitude=None)",BMA
+156.154.126.0/24,dns,12008,23,"Row(city='Paris', code_country=None, id='CDG', latitude=None, longitude=None)",CDG
+156.154.126.0/24,dns,12008,23,"Row(city='Amsterdam', code_country=None, id='AMX', latitude=None, longitude=None)",AMX
+156.154.126.0/24,dns,12008,23,"Row(city='Atlanta', code_country=None, id='PDK', latitude=None, longitude=None)",PDK
+156.154.126.0/24,dns,12008,23,"Row(city='Mumbai', code_country=None, id='BOM', latitude=None, longitude=None)",BOM
+156.154.126.0/24,dns,12008,23,"Row(city='Seattle', code_country=None, id='BFI', latitude=None, longitude=None)",BFI
+156.154.126.0/24,dns,12008,23,"Row(city='New York', code_country=None, id='LGA', latitude=None, longitude=None)",LGA
+156.154.126.0/24,dns,12008,23,"Row(city='London', code_country=None, id='LHR', latitude=None, longitude=None)",LHR
+156.154.126.0/24,dns,12008,23,"Row(city='Chicago', code_country=None, id='ORD', latitude=None, longitude=None)",ORD
+156.154.126.0/24,dns,12008,23,"Row(city='São Paulo', code_country=None, id='SAO', latitude=None, longitude=None)",SAO
+156.154.126.0/24,dns,12008,23,"Row(city='Baltimore', code_country=None, id='BWI', latitude=None, longitude=None)",BWI
+156.154.126.0/24,dns,12008,23,"Row(city='Denver', code_country=None, id='DEN', latitude=None, longitude=None)",DEN
+156.154.126.0/24,dns,12008,23,"Row(city='Taipei', code_country=None, id='TAI', latitude=None, longitude=None)",TAI
+156.154.126.0/24,dns,12008,23,"Row(city='Madrid', code_country=None, id='MAD', latitude=None, longitude=None)",MAD
+156.154.126.0/24,dns,12008,23,"Row(city='Bogota', code_country=None, id='BOG', latitude=None, longitude=None)",BOG
+210.130.188.0/24,ntp,2497,5,"Row(city='San Jose', code_country=None, id='SJC', latitude=None, longitude=None)",SJC
+210.130.188.0/24,ntp,2497,5,"Row(city='Osaka', code_country=None, id='ITM', latitude=None, longitude=None)",ITM
+210.130.188.0/24,ntp,2497,5,"Row(city='Tokyo', code_country=None, id='NRT', latitude=None, longitude=None)",NRT
+210.130.188.0/24,ntp,2497,5,"Row(city='Nagoya', code_country=None, id='NKM', latitude=None, longitude=None)",NKM
+210.130.188.0/24,ntp,2497,5,"Row(city='London', code_country=None, id='LHR', latitude=None, longitude=None)",LHR
+84.203.254.0/24,dns,31122,2,"Row(city='Dublin', code_country=None, id='DUB', latitude=None, longitude=None)",DUB
+84.203.254.0/24,dns,31122,2,"Row(city='London', code_country=None, id='LHR', latitude=None, longitude=None)",LHR

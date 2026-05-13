@@ -1,0 +1,31 @@
+fingerprint,group_name,comment
+mssql,databases,
+oracle,databases,
+postgres,databases,
+redis,databases,
+mysql,databases,
+mongodb,databases
+memcached_binary,databases,distributed cached memory for quick data access on database driven websites
+memcached_ascii,databases,distributed cached memory for quick data access on database driven websites
+ftp,file sharing,
+smb,file sharing,
+http,infrastructure,
+dns,infrastructure,
+tls,infrastructure,could be any underlying protocol that uses TLS
+quic-doq,infrastructure,
+quic-h3,infrastructure,
+ntp,infrastructure,
+ssh,remote access,
+telnet,remote access,
+smtp,email,
+smtp-ftp,email,
+pop3,email,
+imap,email,
+rtsp,streaming,real time streaming
+rdp,streaming,remote desktop
+vnc,streaming,
+pptp,VPN and industrial devices,VPN and tunneling
+amqp,VPN and industrial devices,interoperability among devices
+mqtt,VPN and industrial devices,IoT
+modbus,VPN and industrial devices,used for communications between control devices
+siemens,VPN and industrial devices,communication of industrial devices

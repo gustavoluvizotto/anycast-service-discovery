@@ -3,6 +3,7 @@ __pycache__/
 *.zip
 .idea/
 /*/__pycache__/
+/analysis/quic/vp=*
 /measurements/credentials.py
 /measurements/internet_address_verfploeter_hitlist_*.csv
 /measurements/v6_*.csv
@@ -32,7 +33,6 @@ __pycache__/
 /measurements/input/lzr/*.csv
 /measurements/results/*
 /measurements/nmap-services
-/measurements/input/zmap/initial_qscanner_1a1a1a1a.pkt
 /measurements/hrp/
 /venv/*
 /.vscode/*

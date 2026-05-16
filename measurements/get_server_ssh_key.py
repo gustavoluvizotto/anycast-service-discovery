@@ -1,9 +1,10 @@
 import socket
 import paramiko
 import argparse
+import hashlib
 
 
-PORT = 22
+PORT = 22  # 42512
 IPS = [
     "103.17.152.152",
     "106.2.158.158",
@@ -26,6 +27,7 @@ def ssh_connect_to_ip(ip, p):
                 server_key = transport.get_remote_server_key()
 
                 print(ip, server_key.fingerprint)
+                print(ip, hashlib.sha256(server_key.asbytes()).hexdigest())
                 # or more explicitly:
                 # print(ip, server_key.get_fingerprint().hex())
                 # print("Key type:", server_key.get_name())

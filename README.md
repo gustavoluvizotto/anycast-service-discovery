@@ -65,15 +65,32 @@ The cluster :
 
 ## Usage
 
-To reproduce this work, we advise running first the ``analysis/services_notebooks/measurements_analysis.ipynb``, ``analysis/services_notebooks/openintel_analysis.ipynb`` and ... notebooks.
+To reproduce this work, we advise running first the ``analysis/services_notebooks/measurements_analysis.ipynb``, ``analysis/services_notebooks/openintel_analysis.ipynb``, ``analysis/quic/QUIC Version eval.ipynb``, ``censys/analysis.ipynb`` notebooks.
+
+To export the data set to Zenodo, we had to change the format of the ZMap TCP data from json to compressed parquet.
+Hence, in the cell where we read ZMap TCP data, you have to change accordingly.
+In the notebook ``analysis/services_notebooks/measurements_analysis.ipynb``, follow the instructions of the cell:
+
+```python
+# ATTENTION!
+# Originally, we read json, however to fit to Zenodo requirements, we exported the data as parquet.
+# Hence, you will have to change the commented line below.
+zmaptcp_path_f = os.path.join(ZMAP_BASE_PATH.format(ds=ds_tcp, vp=vp), 
+                              ZMAP_PATH.format(year=zmaptcp_ts.year, month=zmaptcp_ts.month, day=zmaptcp_ts.day))
+
+# read originally as json
+zmaptcp_df = spark.read.option("basePath", ZMAP_BASE_PATH.format(ds=ds_tcp, vp=vp)).option("header", "true").json(zmaptcp_path_f)
+# read from parquet
+#zmaptcp_df = spark.read.option("basePath", ZMAP_BASE_PATH.format(ds=ds_tcp, vp=vp)).option("header", "true").parquet(zmaptcp_path_f)
+```
 
 You can also ignore sections of the notebooks that has the keyword ``UNUSED``.
-They are present only for archival purposes
+They are present only for archival purposes.
 
 ## Data set
 
 Publicly available when the paper becomes public too.
-[DOI: xx.xxx/zenodo.xxxxxx](missing-url)
+[DOI: doi.org/10.5281/zenodo.20374518](https://doi.org/10.5281/zenodo.20374518)
 
 ## Contact
 
@@ -86,6 +103,8 @@ For further information, contact:
 
 - OpenINTEL project
 - CATRIN project (NWA.1215.18.003)
+- INTERSCT project (NWA.1160.18.301)
+- Catalyst (funding provided by the New Zealand Ministry of Business Innovation and Employment and administered by the Royal Society Te Aparangi)
 
 ## License
 

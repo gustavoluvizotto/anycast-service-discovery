@@ -67,9 +67,10 @@ The cluster :
 
 To reproduce this work, we advise running first the ``analysis/services_notebooks/measurements_analysis.ipynb``, ``analysis/services_notebooks/openintel_analysis.ipynb``, ``analysis/quic/QUIC Version eval.ipynb``, ``censys/analysis.ipynb`` notebooks.
 
-To export the data set to Zenodo, we had to change the format of the ZMap TCP data from json to compressed parquet.
-Hence, in the cell where we read ZMap TCP data, you have to change accordingly.
-In the notebook ``analysis/services_notebooks/measurements_analysis.ipynb``, follow the instructions of the cell:
+To export the data set to Zenodo, we had to change the format of the ZMap TCP and ZGrab data from json to compressed parquet.
+Hence, in the cell where we read ZMap TCP and ZGrab data, you have to change accordingly.
+In the notebook ``analysis/services_notebooks/measurements_analysis.ipynb``, follow the instructions of the cell with ``ATTENTION!`` keyword.
+For example:
 
 ```python
 # ATTENTION!

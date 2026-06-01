@@ -133,8 +133,9 @@ The measurement data consists of three files:
 |------|-------|-------------|
 | `lzr.parquet` | 411 MB | LZR service fingerprinting results (2B rows, single sorted parquet) |
 | `zmap.parquet` | 417 MB | ZMap TCP SYN scan results (2B rows, single sorted parquet) |
-| `zgrab_partitioned.tar.xz` | 9.6 GB | ZGrab2 application-layer grab results (Hive-partitioned parquet) |
+| `zgrab_partitioned.tar.xz` | 10.3 GB | ZGrab2 application-layer grab results (Hive-partitioned parquet) |
 | `anycast_prefixes.tar.gz` | 70 MB | Anycast prefixes from LACeS used as scan input |
+| anycast_prefixes.tar.gz | 26.8GB | Pure compressed parquet files, without enhancements for analysis (see below) |
 
 The `lzr.parquet` and `zmap.parquet` files are included in the repository (tracked with Git LFS).
 The `zgrab_partitioned.tar.xz` and `anycast_prefixes.tar.gz` must be downloaded from Zenodo.
@@ -156,6 +157,35 @@ The ZGrab archive does not need to be extracted manually — the ``data/data_loa
 notebook handles extraction automatically when you run it.
 
 See ``data/data_loading.ipynb`` for examples on how to load and query all three datasets.
+
+However, if you want to use the compressed data we collected without the improvements above, you can use the ``anycast_prefixes.tar.xz`` file.
+For that, you must decompress the file.
+BE AWARE, this you consume a lot of your local storage, unlike the previous enhanced data.
+For instance, you can create a folder called ``data`` under this project.
+
+```shell
+mkdir data
+
+mv anycast-services.tar.xz data/
+
+cd data
+
+tar -xf anycast-services.tar.xz
+
+```
+
+The notebooks under ``analysis/services_notebooks/`` make use of such data.
+Please adapt the data loading path accordingly since we use our internal University's s3 storage.
+For example:
+
+```python
+# change this path:
+#ZMAP_BASE_PATH = "s3a://catrin/measurements/tool=zmap/dataset={ds}/vp={vp}"
+ZMAP_BASE_PATH = "PATH_TO_DATA_FOLDER/data/catrin/measurements/tool=zmap/dataset={ds}/vp={vp}"
+```
+
+Your spark instance should also be able to access the ``data`` path.
+Then the data processing remains.
 
 ## Contact
 

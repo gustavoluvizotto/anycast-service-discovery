@@ -125,12 +125,12 @@ Publicly available at [DOI: doi.org/10.5281/zenodo.20374518](https://doi.org/10.
 
 The measurement data consists of three files:
 
-| File | Size | Description |
-|------|------|-------------|
+| File | Size  | Description |
+|------|-------|-------------|
 | `lzr.parquet` | 411 MB | LZR service fingerprinting results (2B rows, single sorted parquet) |
 | `zmap.parquet` | 417 MB | ZMap TCP SYN scan results (2B rows, single sorted parquet) |
 | `zgrab_partitioned.tar.xz` | 9.6 GB | ZGrab2 application-layer grab results (Hive-partitioned parquet) |
-| `anycast_prefixes.tar.gz` | — | Anycast prefixes from LACeS used as scan input |
+| `anycast_prefixes.tar.gz` | 70 MB | Anycast prefixes from LACeS used as scan input |
 
 The `lzr.parquet` and `zmap.parquet` files are included in the repository (tracked with Git LFS).
 The `zgrab_partitioned.tar.xz` and `anycast_prefixes.tar.gz` must be downloaded from Zenodo.

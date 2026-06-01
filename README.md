@@ -1,4 +1,4 @@
-# Artifacts of the paper "A Deep Dive on Deployment Strategies of Services Provisioned using Anycast"
+# Artifacts of the paper "A First Look at Deployment Strategies of Services Provisioned using Anycast"
 
 Welcome to the software artifacts of the aforementioned paper. This repository provides resources needed to examine and reproduce our work.
 
@@ -10,19 +10,50 @@ This is the research project to investigate the operational strategies and servi
 
 The artifacts are divided as follows:
 
-common/generic:
+### Analysis notebooks
+
+Each notebook maps to one or more sections of the paper:
+
+| Notebook | Paper Section |
+|----------|---------------|
+| `analysis/upstream/upstream.ipynb` | §IV-A Anycast Topology |
+| `analysis/geographic/geographic.ipynb` | §IV-B Geographic Placement Strategies |
+| `analysis/ip_utilization/ip_utilization.ipynb` | §IV-C IP Utilization |
+| `analysis/services_notebooks/measurements_analysis.ipynb` | §V-A Transport Layer, §V-B Application Layer, §V-C Services Operators and Resilience, §V-D Distributed Port Scanning |
+| `analysis/services_notebooks/openintel_analysis.ipynb` | §V-B Application Layer (DNS) |
+| `analysis/quic/QUIC Version eval.ipynb` | §V-A Transport Layer (QUIC) |
+| `analysis/dns_service/chaos.ipynb` | §V-B Application Layer (DNS software fingerprinting) |
+
+Ignore sections that contain the ``UNUSED`` keyword — they are present only for archival purposes.
+
+### Data
+
+Reduced measurement data and a loading notebook are in `data/`:
+
+| File | Description |
+|------|-------------|
+| `data/lzr.parquet` | LZR results — 2B rows, 411 MB (single sorted parquet) |
+| `data/zmap.parquet` | ZMap results — 2B rows, 417 MB (single sorted parquet) |
+| `data/data_loading.ipynb` | Examples for loading and querying the measurement data |
+
+ZGrab results (`zgrab_partitioned.tar.xz`, 9.6 GB) are available on Zenodo (see [Data set](#data-set)).
+
+The loading notebook shows how to:
+- Inspect file metadata and schemas
+- Load filtered subsets (by vantage point, port, date) into pandas via pyarrow
+- Look up or join specific IPs against the datasets
+- Run SQL aggregations via DuckDB
+- Extract and query the ZGrab partitioned archive
+
+### Common/generic files
 
 - ``census_helper.py``: helper functions for LACeS census.
 - ``requirements.txt``: python modules used.
 - ``setup_dev.sh``: set up development environment.
 
-Analysis related files:
-- ``analysis/services_notebooks/measurements_analysis.ipynb``: The main services analysis. Ignore the sections that contains ``UNUSED`` from this notebook.
-- ``analysis/services_notebooks/openintel_analysis.ipynb``: The main OpenINTEL analysis. This notebook is used in the ``Service Discovery`` section, DNS part. Ignore the sections in this notebook that contains ``UNUSED``.
-- ``analysis/services_notebooks/*.csv``: The .csv files are intermediary output or used as input for the analysis notebooks under the directory ``analysis/services_notebooks``.
+### Measurement pipeline
 
-Measurement related files:
-- ``run_pipeline_all_ports.sh``: Run the scanning pipeline (without ZGrab2 -- see below). The pipeline can run UDP and TCP ports. UDP ports configured: 53, 123, 443 and 853. TCP ports are anything else. Port 443 is configured to run both TCP and UDP. The ports are taken from ``measurements/input/lzr_ports.txt``.
+- ``run_pipeline_all_ports.sh``: Run the scanning pipeline (without ZGrab2 — see below). The pipeline can run UDP and TCP ports. UDP ports configured: 53, 123, 443 and 853. TCP ports are anything else. Port 443 is configured to run both TCP and UDP. The ports are taken from ``measurements/input/lzr_ports.txt``.
 - ``run_zgrab.sh``: Script to run ZGrab2.
 - ``input/zgrab/zgrab_config.ini``: Instrumentation of scanner module and parameters to use with ZGrab2.
 - ``input/zmap/dns_53.pkt``: The DNS UDP probe extracted from [ZMap UDP probes](https://github.com/zmap/zmap/tree/main/examples/udp-probes)
@@ -55,7 +86,7 @@ You can modify all ``output`` paths and save to your own setup.
 The local environment runs with python virtual environment. 
 The local environment is a MacOS 26.4, with 8 cores and 16GB of RAM (any regular modern PC should do).
 
-The cluster :
+The cluster:
 
 - Spark version 3.5.3
 - Python 3.10.17 | packaged by conda-forge
@@ -130,7 +161,7 @@ For further information, contact:
 - [rhendriks](https://github.com/rhendriks)
 - [gustavoluvizotto](https://github.com/gustavoluvizotto)
 
-## Acknowledgment
+## Acknowledgments
 
 - OpenINTEL project
 - CATRIN project (NWA.1215.18.003)

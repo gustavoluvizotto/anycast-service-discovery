@@ -98,25 +98,29 @@ The cluster:
 
 To reproduce this work, we advise running first the ``analysis/services_notebooks/measurements_analysis.ipynb``, ``analysis/services_notebooks/openintel_analysis.ipynb``, ``analysis/quic/QUIC Version eval.ipynb``, ``censys/analysis.ipynb`` notebooks.
 
-To export the data set to Zenodo, we had to change the format of the ZMap TCP and ZGrab data from json to compressed parquet.
-Hence, in the cell where we read ZMap TCP and ZGrab data, you have to change accordingly.
-In the notebook ``analysis/services_notebooks/measurements_analysis.ipynb``, follow the instructions of the cell with ``ATTENTION!`` keyword.
-For example:
+### Data format
 
-```python
-# ATTENTION!
-# Originally, we read json, however to fit to Zenodo requirements, we exported the data as parquet.
-# Hence, you will have to change the commented line below.
-zmaptcp_path_f = os.path.join(ZMAP_BASE_PATH.format(ds=ds_tcp, vp=vp),
-                              ZMAP_PATH.format(year=zmaptcp_ts.year, month=zmaptcp_ts.month, day=zmaptcp_ts.day))
+The measurement data on Zenodo is provided as reduced single-file parquet exports
+(not the original Hive-partitioned Spark output). The schema differs from the
+original format:
 
-# read originally as json
-zmaptcp_df = spark.read.option("basePath", ZMAP_BASE_PATH.format(ds=ds_tcp, vp=vp)).option("header", "true").json(zmaptcp_path_f)
-# read from parquet
-#zmaptcp_df = spark.read.option("basePath", ZMAP_BASE_PATH.format(ds=ds_tcp, vp=vp)).option("header", "true").parquet(zmaptcp_path_f)
-```
+| Column | Original (Spark) | Reduced (Zenodo) |
+|--------|-------------------|-------------------|
+| IP address | `saddr` (string) | `saddr` (uint32, packed) |
+| Port | `port` (int32) | `port` (uint16) |
+| Date | `year`, `month`, `day` (int) | `date` (date32) |
+| Partition cols | `tool`, `dataset`, `format`, `vp` | `vp` only |
 
-You can also ignore sections of the notebooks that has the keyword ``UNUSED``.
+The analysis notebooks under ``analysis/services_notebooks/`` were originally written
+to read from a Spark cluster using the Hive-partitioned format. To use the reduced
+parquet files, replace the Spark data loading cells. See ``data/data_loading.ipynb``
+for pyarrow and DuckDB examples that work with the reduced format.
+
+For cells marked with the ``ATTENTION!`` keyword, the original Spark loading code
+no longer applies to the Zenodo data. Use the loading patterns from ``data/data_loading.ipynb``
+instead.
+
+You can also ignore sections of the notebooks that have the keyword ``UNUSED``.
 They are present only for archival purposes.
 
 ## Data set
@@ -152,19 +156,6 @@ The ZGrab archive does not need to be extracted manually — the ``data/data_loa
 notebook handles extraction automatically when you run it.
 
 See ``data/data_loading.ipynb`` for examples on how to load and query all three datasets.
-
-The notebooks under ``analysis/services_notebooks/`` make use of such data.
-Please adapt the data loading path accordingly since we use our internal University's s3 storage.
-For example:
-
-```python
-# change this path:
-#ZMAP_BASE_PATH = "s3a://catrin/measurements/tool=zmap/dataset={ds}/vp={vp}"
-ZMAP_BASE_PATH = "PATH_TO_DATA_FOLDER/data/catrin/measurements/tool=zmap/dataset={ds}/vp={vp}"
-```
-
-Your spark instance should also be able to access the ``data`` path.
-Then the data processing remains.
 
 ## Contact
 

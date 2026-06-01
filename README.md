@@ -76,7 +76,7 @@ For example:
 # ATTENTION!
 # Originally, we read json, however to fit to Zenodo requirements, we exported the data as parquet.
 # Hence, you will have to change the commented line below.
-zmaptcp_path_f = os.path.join(ZMAP_BASE_PATH.format(ds=ds_tcp, vp=vp), 
+zmaptcp_path_f = os.path.join(ZMAP_BASE_PATH.format(ds=ds_tcp, vp=vp),
                               ZMAP_PATH.format(year=zmaptcp_ts.year, month=zmaptcp_ts.month, day=zmaptcp_ts.day))
 
 # read originally as json
@@ -90,8 +90,38 @@ They are present only for archival purposes.
 
 ## Data set
 
-Publicly available when the paper becomes public too.
-[DOI: doi.org/10.5281/zenodo.20374518](https://doi.org/10.5281/zenodo.20374518)
+Publicly available at [DOI: doi.org/10.5281/zenodo.20374518](https://doi.org/10.5281/zenodo.20374518).
+
+The ``anycast_prefixes.tar.gz`` contains all the anycast prefixes used in this repository.
+The ``anycast-services.tar.xz`` contains all the ZMap, ZGrab2 and LZR measurement data used in this repository.
+
+To make use of the data set, you must decompress the files.
+For instance, you can create a folder called ``data`` under this project.
+
+```shell
+mkdir data
+
+mv anycast-services.tar.xz anycast_prefixes.tar.gz data/
+
+cd data
+
+tar -xf anycast-services.tar.xz
+
+tar -xf anycast_prefixes.tar.gz
+```
+
+The notebooks under ``analysis/services_notebooks/`` make use of such data.
+Please adapt the data loading path accordingly since we use our internal University's s3 storage.
+For example:
+
+```python
+# change this path:
+#ZMAP_BASE_PATH = "s3a://catrin/measurements/tool=zmap/dataset={ds}/vp={vp}"
+ZMAP_BASE_PATH = "PATH_TO_DATA_FOLDER/data/catrin/measurements/tool=zmap/dataset={ds}/vp={vp}"
+```
+
+Your spark instance should also be able to access the ``data`` path.
+Then the data processing remains.
 
 ## Contact
 

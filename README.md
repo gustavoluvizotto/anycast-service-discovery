@@ -135,7 +135,7 @@ The measurement data consists of three files:
 | `zmap.parquet` | 417 MB | ZMap TCP SYN scan results (2B rows, single sorted parquet) |
 | `zgrab_partitioned.tar.xz` | 10.3 GB | ZGrab2 application-layer grab results (Hive-partitioned parquet) |
 | `anycast_prefixes.tar.gz` | 70 MB | Anycast prefixes from LACeS used as scan input |
-| anycast_prefixes.tar.gz | 26.8GB | Pure compressed parquet files, without enhancements for analysis (see below) |
+| ``anycast_prefixes.tar.gz`` | 26.8GB | Partitioned parquet files used with a cluster environment |
 
 The `lzr.parquet` and `zmap.parquet` files are included in the repository (tracked with Git LFS).
 The `zgrab_partitioned.tar.xz` and `anycast_prefixes.tar.gz` must be downloaded from Zenodo.
@@ -158,9 +158,9 @@ notebook handles extraction automatically when you run it.
 
 See ``data/data_loading.ipynb`` for examples on how to load and query all three datasets.
 
-However, if you want to use the compressed data we collected without the improvements above, you can use the ``anycast_prefixes.tar.xz`` file.
+However, if you have a Spark cluster and want to use the compressed data we collected without the improvements above, you can use the ``anycast_prefixes.tar.xz`` file.
 For that, you must decompress the file.
-BE AWARE, this you consume a lot of your local storage, unlike the previous enhanced data.
+!!BE AWARE!!, this you consume a lot of your local storage, unlike the previous enhanced data.
 For instance, you can create a folder called ``data`` under this project.
 
 ```shell

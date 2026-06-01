@@ -1,6 +1,8 @@
 pandas
+numpy
 requests
 pyarrow
+duckdb
 fastparquet
 ipykernel
 pip_autoremove

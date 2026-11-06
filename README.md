@@ -4,6 +4,17 @@ Welcome to the software artifacts of the aforementioned paper. This repository p
 
 Paper reference: Published at the [Network Traffic Measurement and Analysis Conference (TMA) 2026](https://tma.ifip.org/2026/wp-content/uploads/sites/15/2026/06/tma2026-final24.pdf).
 
+```bibtex
+@inproceedings{luvizottocesar2026anycast,
+  title     = {A First Look at Deployment Strategies of Services Provisioned using Anycast},
+  author    = {Luvizotto Cesar, Gustavo and Hendriks, Remi and Angelov, Martin and Jonker, Mattijs and van Rijswijk-Deij, Roland and Zirngibl, Johannes and Holz, Ralph},
+  booktitle = {Network Traffic Measurement and Analysis Conference (TMA)},
+  year      = {2026},
+  isbn      = {978-3-903176-83-6},
+  publisher = {IFIP}
+}
+```
+
 ## Project structure
 
 This is the research project to investigate the operational strategies and services on anycast prefixes.

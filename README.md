@@ -1,5 +1,7 @@
 # Artifacts of the paper "A First Look at Deployment Strategies of Services Provisioned using Anycast"
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20374518.svg)](https://doi.org/10.5281/zenodo.20374518)
+
 Welcome to the software artifacts of the aforementioned paper. This repository provides resources needed to examine and reproduce our work.
 
 Paper reference: Published at the [Network Traffic Measurement and Analysis Conference (TMA) 2026](https://tma.ifip.org/2026/wp-content/uploads/sites/15/2026/06/tma2026-final24.pdf).

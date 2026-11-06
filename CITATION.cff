@@ -1,0 +1,51 @@
+cff-version: 1.2.0
+title: "A First Look at Deployment Strategies of Services Provisioned using Anycast"
+message: "If you use this software, please cite our paper."
+type: software
+authors:
+  - family-names: Luvizotto Cesar
+    given-names: Gustavo
+    affiliation: University of Twente
+  - family-names: Hendriks
+    given-names: Remi
+    affiliation: University of Twente
+  - family-names: Angelov
+    given-names: Martin
+    affiliation: University of Twente
+  - family-names: Jonker
+    given-names: Mattijs
+    affiliation: University of Twente
+  - family-names: van Rijswijk-Deij
+    given-names: Roland
+    affiliation: University of Twente
+  - family-names: Zirngibl
+    given-names: Johannes
+    affiliation: Max Planck Institute For Informatics
+  - family-names: Holz
+    given-names: Ralph
+    affiliation: University of Twente / University of Münster
+preferred-citation:
+  type: conference-paper
+  title: "A First Look at Deployment Strategies of Services Provisioned using Anycast"
+  authors:
+    - family-names: Luvizotto Cesar
+      given-names: Gustavo
+    - family-names: Hendriks
+      given-names: Remi
+    - family-names: Angelov
+      given-names: Martin
+    - family-names: Jonker
+      given-names: Mattijs
+    - family-names: van Rijswijk-Deij
+      given-names: Roland
+    - family-names: Zirngibl
+      given-names: Johannes
+    - family-names: Holz
+      given-names: Ralph
+  collection-title: "Network Traffic Measurement and Analysis Conference (TMA)"
+  year: 2026
+  isbn: "978-3-903176-83-6"
+  publisher:
+    name: IFIP
+  url: "https://tma.ifip.org/2026/wp-content/uploads/sites/15/2026/06/tma2026-final24.pdf"
+license: MIT

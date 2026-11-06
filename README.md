@@ -19,7 +19,7 @@ Paper reference: Published at the [Network Traffic Measurement and Analysis Conf
 
 ## Project structure
 
-This is the research project to investigate the operational strategies and services on anycast prefixes.
+This is the research project to investigate the operational strategies and services on anycast prefixes as detected by [LACeS](https://manycast.net).
 
 The artifacts are divided as follows:
 
